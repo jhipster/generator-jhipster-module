@@ -1,0 +1,28 @@
+{
+    "name": "generator-jhipster-<%= moduleName %>",
+    "version": "0.0.0",
+    "description": "<%= moduleDescription %>",
+    "keywords": [
+        "yeoman-generator",
+        "jhipster-module"
+    ],
+    "homepage": "https://github.com/<%= githubName %>/generator-jhipster-<%= moduleName %>",
+    "bugs": "https://github.com/<%= githubName %>/generator-jhipster-<%= moduleName %>/issues",
+    "author": {
+        "name": "<%= authorName %>",
+        "email": "",
+        "url": ""
+    },
+    "files": [
+        "generators"
+    ],
+    "main": "generators/app/index.js",
+    "repository": "https://github.com/<%= githubName %>/generator-jhipster-<%= moduleName %>",
+    "dependencies": {
+        "yeoman-generator": "0.21.1",
+        "chalk": "1.0.0",
+        "mkdirp": "0.5.1",
+        "generator-jhipster": ">=2.26.0"
+    },
+    "license": "Apache-2.0"
+}
