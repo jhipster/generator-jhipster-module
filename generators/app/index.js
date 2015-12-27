@@ -128,6 +128,10 @@ module.exports = yeoman.generators.Base.extend({
   },
 
   end: function () {
-
+    console.log('\n' + chalk.bold.green('##### USAGE #####'));
+    console.log('To begin to work:');
+    console.log('- launch: ' + chalk.yellow.bold('npm install'));
+    console.log('- link: ' + chalk.yellow.bold('npm link'));
+    console.log('- use your module in a JHipster project: ' + chalk.yellow.bold('yo jhipster-' + this.moduleName));
   }
 });
