@@ -1,6 +1,6 @@
 # generator-jhipster-module
 [![NPM version][npm-image]][npm-url] [![Build Status][travis-image]][travis-url] [![Dependency Status][daviddm-image]][daviddm-url]
-> JHipster module, used to create a JHipster module
+> JHipster module, used to create a JHipster module - "*One module to rule them all*"
 
 <div align="center">
   <a href="http://jhipster.github.io">
@@ -10,13 +10,11 @@
 
 # Introduction
 
-This is **not really** a [JHipster](http://jhipster.github.io/) module, that is meant to **not** be used in a JHipster application. This module is used to generate a new template for coding a new JHipster module. Is it recursive :cyclone:? A JHipster module to create a JHipster module :joy:
+This is **not really** a [JHipster](http://jhipster.github.io/) module, that is meant to **not** be used in a JHipster application. This module is used to generate a new template for coding a new JHipster module. A JHipster module to create a JHipster module :cyclone:
 
 # Prerequisites
 
 Reading this [JHipster module](https://jhipster.github.io/modules/creating_a_module.html)
-
-And [Installing JHipster](https://jhipster.github.io/installation.html)
 
 # Installation
 
