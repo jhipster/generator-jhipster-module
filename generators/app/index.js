@@ -32,16 +32,16 @@ module.exports = yeoman.generators.Base.extend({
         chalk.red.bold('        under:the:sky,:Seven:for:the\n') +
         chalk.red.bold('      Dwarf-Lords::in::their::halls:of\n') +
         chalk.red.bold('     stone,:Nine             for:Mortal\n') +
-        chalk.red.bold('    :::Men:::     ________     doomed::to\n') +
-        chalk.red.bold('  die.:One   _,-\'...:... `-.    for:::the\n') +
-        chalk.red.bold('  ::Dark::  ,- .:::::::::::. `.   Lord::on\n') +
-        chalk.red.bold(' his:dark ,\'  .:::::zzz:::::.  `.  :throne:\n') +
-        chalk.red.bold(' In:::the/    ::::dMMMMMb::::    \ Land::of\n') +
-        chalk.red.bold(' :Mordor:\    ::::dMMmgJP::::    / :where::\n') +
-        chalk.red.bold(' ::the::: \'.  \'::::YMMMP::::\'  ,\'  Shadows:\n') +
-        chalk.red.bold('  lie.::One  `. ``:::::::::\'\' ,\' Module::to\n') +
-        chalk.red.bold('  ::rule::    `-._```:\'\'\'_,-\'     ::them::\n') +
-        chalk.red.bold('   all,::One     `-----\'       Module::to\n') +
+        chalk.red.bold('    :::Men:::' + chalk.yellow('    ________') + '     doomed::to\n') +
+        chalk.red.bold('  die.:One' + chalk.yellow('   _,-\'...:... `-.    ') + 'for:::the\n') +
+        chalk.red.bold('  ::Dark::' + chalk.yellow('  ,- .:::::::::::. `.   ') + 'Lord::on\n') +
+        chalk.red.bold(' his:dark' + chalk.yellow(' ,\'  .:::::zzz:::::.  `.  ') + ':throne:\n') +
+        chalk.red.bold(' In:::the' + chalk.yellow('/    ::::dMMMMMb::::    \  ') + 'Land::of\n') +
+        chalk.red.bold(' :Mordor:' + chalk.yellow('\    ::::dMMmgJP::::    /  ') + ':where::\n') +
+        chalk.red.bold(' ::the:::' + chalk.yellow(' \'.  \'::::YMMMP::::\'  ,\'  ') + 'Shadows:\n') +
+        chalk.red.bold('  lie.::One' + chalk.yellow('  `. ``:::::::::\'\' ,\' ') + 'Module::to\n') +
+        chalk.red.bold('  ::rule::' + chalk.yellow('    `-._```:\'\'\'_,-\'     ') + '::them::\n') +
+        chalk.red.bold('   all,::One' + chalk.yellow('     `-----\'       ') + 'Module::to\n') +
         chalk.red.bold('    ::find:::                  them,:One\n') +
         chalk.red.bold('     Module:::::to          bring::them\n') +
         chalk.red.bold('       all::and::in:the:darkness:bind\n') +
@@ -61,10 +61,11 @@ module.exports = yeoman.generators.Base.extend({
         type: 'input',
         name: 'moduleName',
         validate: function (input) {
-            if (/^([a-zA-Z0-9_]*)$/.test(input)) return true;
-            return 'Your application name cannot contain special characters or a blank space, using the default name instead';
+            if (/^([a-zA-Z0-9_\-]*)$/.test(input)) return true;
+            return 'Your module name is mandatory, cannot contain special characters or a blank space, using the default name instead';
         },
-        message: 'What is the base name of your module'
+        message: 'What is the base name of your module',
+        default: 'hello-world'
       },
       {
         type: 'input',
@@ -74,6 +75,10 @@ module.exports = yeoman.generators.Base.extend({
       {
         type: 'input',
         name: 'githubName',
+        validate: function (input) {
+          if (/^([a-zA-Z0-9_]*)$/.test(input) && input != '') return true;
+          return 'Your username is mandatory, cannot contain special characters or a blank space';
+        },
         message: 'What is your GitHub username?',
       },
       {
@@ -105,12 +110,13 @@ module.exports = yeoman.generators.Base.extend({
     this.copy('.gitignore', '.gitignore');
     this.copy('.travis.yml', '.travis.yml');
 
+    mkdirp('generators/app/templates');
+
     this.template('package.json', 'package.json', this, {});
     this.template('LICENSE', 'LICENSE', this, {});
     this.template('README.md', 'README.md', this, {});
-
     this.template('generators/app/index.js', 'generators/app/index.js', this, {});
-    mkdirp('generators/app/templates');
+    this.template('generators/app/templates/dummy.txt', 'generators/app/templates/dummy.txt', this, {});
 
     done();
   },

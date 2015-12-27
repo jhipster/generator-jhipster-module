@@ -21,7 +21,7 @@
     "dependencies": {
         "yeoman-generator": "0.21.1",
         "chalk": "1.0.0",
-        "mkdirp": "0.5.1",
+        "yosay": "1.0.2",
         "generator-jhipster": ">=2.26.0"
     },
     "license": "Apache-2.0"

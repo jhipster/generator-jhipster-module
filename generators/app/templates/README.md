@@ -1,6 +1,6 @@
-# generator-jhipster-module
+# generator-jhipster-<%= moduleName %>
 [![NPM version][npm-image]][npm-url] [![Build Status][travis-image]][travis-url] [![Dependency Status][daviddm-image]][daviddm-url]
-> <%= moduleDescription %>
+> JHipster module, <%= moduleDescription %>
 
 # Introduction
 
@@ -8,9 +8,9 @@ This is a [JHipster](http://jhipster.github.io/) module, that is meant to be use
 
 # Prerequisites
 
-Reading this [JHipster module](https://jhipster.github.io/modules/creating_a_module.html)
+As this is a [JHipster](http://jhipster.github.io/) module, we expect you have JHipster and its related tools already installed:
 
-And [Installing JHipster](https://jhipster.github.io/installation.html)
+- [Installing JHipster](https://jhipster.github.io/installation.html)
 
 # Installation
 
