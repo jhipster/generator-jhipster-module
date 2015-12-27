@@ -36,7 +36,7 @@ To run the module, follow these step :
 - create a new directory
 
 ```bash
-mkdir generator-jhipster-<name of the module>
+mkdir generator-jhipster-<name of your module>
 ```
 
 - init the git repository
