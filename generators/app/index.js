@@ -104,17 +104,17 @@ module.exports = yeoman.generators.Base.extend({
   writing: function () {
     var done = this.async();
 
-    // this.copy('editorconfig', '.editorconfig');
-    // this.copy('eslintrc', '.eslintrc');
-    // this.copy('gitattributes', '.gitattributes');
-    // this.copy('gitignore', '.gitignore');
-    // this.copy('travis.yml', '.travis.yml');
+    this.copy('editorconfig', '.editorconfig');
+    this.copy('eslintrc', '.eslintrc');
+    this.copy('gitattributes', '.gitattributes');
+    this.copy('gitignore', '.gitignore');
+    this.copy('_travis.yml', '.travis.yml');
 
     mkdirp('generators/app/templates');
 
-    this.template('package.json', 'package.json', this, {});
-    this.template('LICENSE', 'LICENSE', this, {});
-    this.template('README.md', 'README.md', this, {});
+    this.template('_package.json', 'package.json', this, {});
+    this.template('_LICENSE', 'LICENSE', this, {});
+    this.template('_README.md', 'README.md', this, {});
     this.template('generators/app/index.js', 'generators/app/index.js', this, {});
     this.template('generators/app/templates/dummy.txt', 'generators/app/templates/dummy.txt', this, {});
 
