@@ -1,6 +1,6 @@
 {
     "name": "generator-jhipster-module",
-    "version": "0.0.6",
+    "version": "0.0.7",
     "description": "JHipster module, used to create a JHipster module",
     "keywords": [
         "yeoman-generator",
