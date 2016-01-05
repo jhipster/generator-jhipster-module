@@ -17,16 +17,8 @@ var jhipsterFunc = {};
 module.exports = yeoman.generators.Base.extend({
 
   initializing: {
-    // templates: function (args) {
-    //   this.composeWith('jhipster:modules', {
-    //     options: {
-    //       jhipsterVar: jhipsterVar,
-    //       jhipsterFunc: jhipsterFunc
-    //     }
-    //   });
-    // },
     displayLogo: function () {
-      console.log(' \n' +
+      this.log(' \n' +
         chalk.red.bold('               Three::Modules\n') +
         chalk.red.bold('           for:::the::Elven-Kings\n') +
         chalk.red.bold('        under:the:sky,:Seven:for:the\n') +
@@ -49,8 +41,8 @@ module.exports = yeoman.generators.Base.extend({
         chalk.red.bold('            where:::the::Shadows\n') +
         chalk.red.bold('                 :::lie.:::\n'));
 
-      console.log(chalk.white.bold('         http://jhipster.github.io\n'));
-      console.log(chalk.white('Welcome to the ' + chalk.bold('JHipster Module') + ' Generator! ' + chalk.yellow('v' + packagejs.version + '\n')));
+      this.log(chalk.white.bold('         http://jhipster.github.io\n'));
+      this.log(chalk.white('Welcome to the ' + chalk.bold('JHipster Module') + ' Generator! ' + chalk.yellow('v' + packagejs.version + '\n')));
     }
   },
 
@@ -121,18 +113,12 @@ module.exports = yeoman.generators.Base.extend({
     done();
   },
 
-  install: function () {
-    // var done = this.async();
-    // this.installDependencies();
-    // done();
-  },
-
   end: function () {
-    console.log('\n' + chalk.bold.green('##### USAGE #####'));
-    console.log('To begin to work:');
-    console.log('- launch: ' + chalk.yellow.bold('npm install'));
-    console.log('- link: ' + chalk.yellow.bold('npm link'));
-    console.log('- use your module in a JHipster project: ' + chalk.yellow.bold('yo jhipster-' + this.moduleName));
-    console.log('');
+    this.log('\n' + chalk.bold.green('##### USAGE #####'));
+    this.log('To begin to work:');
+    this.log('- launch: ' + chalk.yellow.bold('npm install'));
+    this.log('- link: ' + chalk.yellow.bold('npm link'));
+    this.log('- test your module in a JHipster project: ' + chalk.yellow.bold('yo jhipster-' + this.moduleName));
+    this.log('- then, come back here, and begin to code!\n')
   }
 });

@@ -59,10 +59,10 @@ module.exports = yeoman.generators.Base.extend({
 
     this.message = this.props.message;
 
-    console.log('baseName=' + this.baseName);
-    console.log('packageName=' + this.packageName);
-    console.log('angularAppName=' + this.angularAppName);
-    console.log('message=' + this.message);
+    this.log('baseName=' + this.baseName);
+    this.log('packageName=' + this.packageName);
+    this.log('angularAppName=' + this.angularAppName);
+    this.log('message=' + this.message);
 
     this.template('dummy.txt', 'dummy.txt', this, {});
 
@@ -76,6 +76,6 @@ module.exports = yeoman.generators.Base.extend({
   },
 
   end: function () {
-    console.log('End');
+    this.log('End');
   }
 });
