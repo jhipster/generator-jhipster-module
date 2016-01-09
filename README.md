@@ -4,7 +4,7 @@
 
 <div align="center">
   <a href="http://jhipster.github.io">
-    <img src="https://github.com/pascalgrimaud/generator-jhipster-module/raw/master/images/logo-jhipster.png">
+    <img src="https://github.com/jhipster/generator-jhipster-module/raw/master/images/logo-jhipster.png">
   </a>
 </div>
 
@@ -25,18 +25,25 @@ npm install -g generator-jhipster-module
 ```
 
 To update this module:
+
 ```bash
 npm update -g generator-jhipster-module
 ```
 
 # Usage
 
-To run the module, follow these step :
+To run the module, follow these steps :
 
 - create a new directory
 
 ```bash
 mkdir generator-jhipster-<name of your module>
+```
+
+- go into this directory
+
+```bash
+cd generator-jhipster-<name of your module>
 ```
 
 - init the git repository
@@ -59,7 +66,7 @@ Apache-2.0 © [Pascal Grimaud](https://twitter.com/pascalgrimaud)
 
 [npm-image]: https://img.shields.io/npm/v/generator-jhipster-module.svg
 [npm-url]: https://npmjs.org/package/generator-jhipster-module
-[travis-image]: https://travis-ci.org/pascalgrimaud/generator-jhipster-module.svg?branch=master
-[travis-url]: https://travis-ci.org/pascalgrimaud/generator-jhipster-module
-[daviddm-image]: https://david-dm.org/pascalgrimaud/generator-jhipster-module.svg?theme=shields.io
-[daviddm-url]: https://david-dm.org/pascalgrimaud/generator-jhipster-module
+[travis-image]: https://travis-ci.org/jhipster/generator-jhipster-module.svg?branch=master
+[travis-url]: https://travis-ci.org/jhipster/generator-jhipster-module
+[daviddm-image]: https://david-dm.org/jhipster/generator-jhipster-module.svg?theme=shields.io
+[daviddm-url]: https://david-dm.org/jhipster/generator-jhipster-module
