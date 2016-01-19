@@ -1,7 +1,6 @@
 'use strict';
 var yeoman = require('yeoman-generator');
 var chalk = require('chalk');
-var yosay = require('yosay');
 var packagejs = require(__dirname + '/../../package.json');
 
 // Stores JHipster variables
@@ -13,7 +12,7 @@ var jhipsterFunc = {};
 module.exports = yeoman.generators.Base.extend({
 
   initializing: {
-    templates: function (args) {
+    compose: function (args) {
       this.composeWith('jhipster:modules', {
         options: {
           jhipsterVar: jhipsterVar,
@@ -23,9 +22,7 @@ module.exports = yeoman.generators.Base.extend({
     },
     displayLogo: function () {
       // Have Yeoman greet the user.
-      this.log(yosay(
-        'Welcome to the ' + chalk.red('JHipster <%= moduleName %>') + ' generator! ' + chalk.yellow('v' + packagejs.version)
-      ));
+      this.log('Welcome to the ' + chalk.red('JHipster <%= moduleName %>') + ' generator! ' + chalk.yellow('v' + packagejs.version + '\n'));
     }
   },
 
@@ -47,26 +44,32 @@ module.exports = yeoman.generators.Base.extend({
     }.bind(this));
   },
 
-  writing: function () {
-    var done = this.async();
+  writing: {
+    writeTemplates : function () {
+      this.baseName = jhipsterVar.baseName;
+      this.packageName = jhipsterVar.packageName;
+      this.angularAppName = jhipsterVar.angularAppName;
+      var javaDir = jhipsterVar.javaDir;
+      var resourceDir = jhipsterVar.resourceDir;
+      var webappDir = jhipsterVar.webappDir;
 
-    this.baseName = jhipsterVar.baseName;
-    this.packageName = jhipsterVar.packageName;
-    this.angularAppName = jhipsterVar.angularAppName;
-    var javaDir = jhipsterVar.javaDir;
-    var resourceDir = jhipsterVar.resourceDir;
-    var webappDir = jhipsterVar.webappDir;
+      this.message = this.props.message;
 
-    this.message = this.props.message;
+      this.log('baseName=' + this.baseName);
+      this.log('packageName=' + this.packageName);
+      this.log('angularAppName=' + this.angularAppName);
+      this.log('message=' + this.message);
 
-    this.log('baseName=' + this.baseName);
-    this.log('packageName=' + this.packageName);
-    this.log('angularAppName=' + this.angularAppName);
-    this.log('message=' + this.message);
+      this.template('dummy.txt', 'dummy.txt', this, {});
+    },
 
-    this.template('dummy.txt', 'dummy.txt', this, {});
-
-    done();
+    registering: function () {
+      try {
+        jhipsterFunc.registerModule("generator-jhipster-<%= moduleName %>", "<%= hookFor %>", "<%= hookType %>", "<%= hookCallback %>", "<%= moduleDescription %>");
+      } catch (err) {
+        this.log(chalk.red.bold('WARN!') + ' Could not register as a jhipster <%= hookFor %> <%= hookType %> creation hook...\n');
+      }
+    }
   },
 
   install: function () {

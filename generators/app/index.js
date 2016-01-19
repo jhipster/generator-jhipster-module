@@ -66,7 +66,7 @@ module.exports = yeoman.generators.Base.extend({
       },
       {
         type: 'list',
-        name: 'hookType',
+        name: 'hook',
         message: 'Do you want to enable hooks for your module from JHipster generator?',
         choices: [
           {name: 'Yes, Enable post entity hook', value: 'postEntity'},
@@ -76,7 +76,7 @@ module.exports = yeoman.generators.Base.extend({
       },
       {
         when: function (props) {
-          return props.hookType != 'none';
+          return props.hook != 'none';
         },
         type: 'list',
         name: 'hookCallback',
@@ -123,8 +123,12 @@ module.exports = yeoman.generators.Base.extend({
       this.props = props;
       this.moduleName = props.moduleName;
       this.moduleDescription = props.moduleDescription;
-      this.hookType = props.hookType;
+      this.hook = props.hook;
       this.hookCallback = props.hookCallback;
+      if(this.hook == 'postEntity'){
+        this.hookType = 'post';
+        this.hookFor = 'entity';
+      }
       this.githubName = props.githubName;
       this.authorName = props.authorName;
       this.authorEmail = props.authorEmail;
@@ -154,7 +158,7 @@ module.exports = yeoman.generators.Base.extend({
     },
 
     writeSubGenTemplates : function () {
-      if(this.hookType == 'none' || this.hookCallback == 'app'){
+      if(this.hook == 'none' || this.hookCallback == 'app'){
         return;
       }
       mkdirp('generators/entity/templates');
