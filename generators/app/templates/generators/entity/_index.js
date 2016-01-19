@@ -87,7 +87,7 @@ module.exports = yeoman.generators.Base.extend({
 
   end: function () {
     if (this.yourOptionKey){
-      this.log('\n' + chalk.bold.green('Entity audit enabled'));
+      this.log('\n' + chalk.bold.green('<%= moduleName %> enabled'));
     }
   }
 });
