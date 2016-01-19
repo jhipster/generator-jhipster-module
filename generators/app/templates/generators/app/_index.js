@@ -62,7 +62,7 @@ module.exports = yeoman.generators.Base.extend({
 
       this.template('dummy.txt', 'dummy.txt', this, {});
     }<% if(hook != 'none') { %>,
-    
+
     registering: function () {
       try {
         jhipsterFunc.registerModule("generator-jhipster-<%= moduleName %>", "<%= hookFor %>", "<%= hookType %>", "<%= hookCallback %>", "<%= moduleDescription %>");
