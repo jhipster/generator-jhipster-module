@@ -5,7 +5,7 @@ var chalk = require('chalk');
 var packagejs = require(__dirname + '/../../package.json');
 
 // Stores JHipster variables
-var jhipsterVar = {moduleName: 'entity-audit'};
+var jhipsterVar = {moduleName: '<%= moduleName %>'};
 
 // Stores JHipster functions
 var jhipsterFunc = {};
