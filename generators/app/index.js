@@ -65,6 +65,29 @@ module.exports = yeoman.generators.Base.extend({
         message: 'Give a description of your module',
       },
       {
+        type: 'list',
+        name: 'hookType',
+        message: 'Do you want to enable hooks for your module from JHipster generator?',
+        choices: [
+          {name: 'Yes, Enable post entity hook', value: 'postEntity'},
+          {name: 'No, This is a stand alone module', value: 'none'}
+        ],
+        default: 'none'
+      },
+      {
+        when: function (props) {
+          return props.hookType != 'none';
+        },
+        type: 'list',
+        name: 'hookCallback',
+        message: 'Do you want to add a subgenerator for this hook?',
+        choices: [
+          {name: 'Yes, Add a subgenerator', value: 'entity'},
+          {name: 'No, Hook to default generator', value: 'app'}
+        ],
+        default: 'entity'
+      },
+      {
         type: 'input',
         name: 'githubName',
         validate: function (input) {
@@ -81,38 +104,66 @@ module.exports = yeoman.generators.Base.extend({
         default: "Firstname Lastname",
         store: true
       },
+      {
+        type: 'input',
+        name: 'authorEmail',
+        message: 'Your email?',
+        store: true
+      },
+      {
+        type: 'input',
+        name: 'authorUrl',
+        message: 'Your home page url?',
+        store: true
+      }
 
     ];
 
     this.prompt(prompts, function (props) {
       this.props = props;
-      // To access props later use this.props.someOption;
       this.moduleName = props.moduleName;
       this.moduleDescription = props.moduleDescription;
+      this.hookType = props.hookType;
+      this.hookCallback = props.hookCallback;
       this.githubName = props.githubName;
       this.authorName = props.authorName;
+      this.authorEmail = props.authorEmail;
+      this.authorUrl = props.authorUrl;
       done();
     }.bind(this));
   },
 
-  writing: function () {
-    var done = this.async();
+  writing: {
+    writeCommonTemplates : function () {
+      this.copy('editorconfig', '.editorconfig');
+      this.copy('eslintrc', '.eslintrc');
+      this.copy('gitattributes', '.gitattributes');
+      this.copy('gitignore', '.gitignore');
+      this.copy('_travis.yml', '.travis.yml');
+      this.copy('_gulpfile.js', '.gulpfile.js');
+      this.template('_package.json', 'package.json', this, {});
+      this.template('_LICENSE', 'LICENSE', this, {});
+      this.template('_README.md', 'README.md', this, {});
+    },
 
-    this.copy('editorconfig', '.editorconfig');
-    this.copy('eslintrc', '.eslintrc');
-    this.copy('gitattributes', '.gitattributes');
-    this.copy('gitignore', '.gitignore');
-    this.copy('_travis.yml', '.travis.yml');
+    writeMainGenTemplates : function () {
+      mkdirp('generators/app/templates');
 
-    mkdirp('generators/app/templates');
+      this.template('generators/app/index.js', 'generators/app/index.js', this, {});
+      this.template('generators/app/templates/dummy.txt', 'generators/app/templates/dummy.txt', this, {});
+    },
 
-    this.template('_package.json', 'package.json', this, {});
-    this.template('_LICENSE', 'LICENSE', this, {});
-    this.template('_README.md', 'README.md', this, {});
-    this.template('generators/app/index.js', 'generators/app/index.js', this, {});
-    this.template('generators/app/templates/dummy.txt', 'generators/app/templates/dummy.txt', this, {});
+    writeSubGenTemplates : function () {
+      if(this.hookType == 'none' || this.hookCallback == 'app'){
+        return;
+      }
+      mkdirp('generators/entity/templates');
 
-    done();
+      this.template('generators/entity/index.js', 'generators/entity/index.js', this, {});
+      this.template('generators/entity/templates/dummy.txt', 'generators/entity/templates/dummy.txt', this, {});
+
+    }
+
   },
 
   end: function () {
