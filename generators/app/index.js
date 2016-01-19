@@ -71,13 +71,15 @@ module.exports = yeoman.generators.Base.extend({
           if (/^([a-zA-Z0-9_]*)$/.test(input) && input != '') return true;
           return 'Your username is mandatory, cannot contain special characters or a blank space';
         },
+        store: true,
         message: 'What is your GitHub username?',
       },
       {
         type: 'input',
         name: 'authorName',
         message: 'Who are you? Firstname Lastname',
-        default: "Firstname Lastname"
+        default: "Firstname Lastname",
+        store: true
       },
 
     ];
