@@ -153,8 +153,8 @@ module.exports = yeoman.generators.Base.extend({
     writeMainGenTemplates : function () {
       mkdirp('generators/app/templates');
 
-      this.template('generators/app/index.js', 'generators/app/index.js', this, {});
-      this.template('generators/app/templates/dummy.txt', 'generators/app/templates/dummy.txt', this, {});
+      this.template('generators/app/_index.js', 'generators/app/index.js', this, {});
+      this.template('generators/app/templates/_dummy.txt', 'generators/app/templates/dummy.txt', this, {});
     },
 
     writeSubGenTemplates : function () {
@@ -163,8 +163,8 @@ module.exports = yeoman.generators.Base.extend({
       }
       mkdirp('generators/entity/templates');
 
-      this.template('generators/entity/index.js', 'generators/entity/index.js', this, {});
-      this.template('generators/entity/templates/dummy.txt', 'generators/entity/templates/dummy.txt', this, {});
+      this.template('generators/entity/_index.js', 'generators/entity/index.js', this, {});
+      this.template('generators/entity/templates/_dummy.txt', 'generators/entity/templates/dummy.txt', this, {});
 
     }
 

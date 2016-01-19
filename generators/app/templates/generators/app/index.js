@@ -61,24 +61,22 @@ module.exports = yeoman.generators.Base.extend({
       this.log('message=' + this.message);
 
       this.template('dummy.txt', 'dummy.txt', this, {});
-    },
-
+    }<% if(hook != 'none') { %>,
+    
     registering: function () {
       try {
         jhipsterFunc.registerModule("generator-jhipster-<%= moduleName %>", "<%= hookFor %>", "<%= hookType %>", "<%= hookCallback %>", "<%= moduleDescription %>");
       } catch (err) {
         this.log(chalk.red.bold('WARN!') + ' Could not register as a jhipster <%= hookFor %> <%= hookType %> creation hook...\n');
       }
-    }
+    }<% } %>
   },
 
   install: function () {
-    var done = this.async();
     this.installDependencies();
-    done();
   },
 
   end: function () {
-    this.log('End');
+    this.log('End of <%= moduleName %> generator');
   }
 });
