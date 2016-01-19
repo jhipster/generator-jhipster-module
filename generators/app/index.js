@@ -48,6 +48,7 @@ module.exports = yeoman.generators.Base.extend({
 
   prompting: function () {
     var done = this.async();
+    var defaultAppBaseName = (/^[a-zA-Z0-9_]+$/.test(path.basename(process.cwd())))?path.basename(process.cwd()).replace('generator-jhipster-', ''):'hello-world';
     var prompts = [
       {
         type: 'input',
@@ -57,7 +58,7 @@ module.exports = yeoman.generators.Base.extend({
             return 'Your module name is mandatory, cannot contain special characters or a blank space, using the default name instead';
         },
         message: 'What is the base name of your module',
-        default: 'hello-world'
+        default: defaultAppBaseName
       },
       {
         type: 'input',
