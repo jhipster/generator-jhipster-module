@@ -10,7 +10,7 @@ var jhipsterVar = {moduleName: 'entity-audit'};
 // Stores JHipster functions
 var jhipsterFunc = {};
 
-module.exports = yeoman.generators.Base.extend({
+module.exports = yeoman.Base.extend({
 
   initializing: {
 

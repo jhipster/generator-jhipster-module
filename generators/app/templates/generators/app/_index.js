@@ -9,7 +9,7 @@ var jhipsterVar = {moduleName: '<%= moduleName %>'};
 // Stores JHipster functions
 var jhipsterFunc = {};
 
-module.exports = yeoman.generators.Base.extend({
+module.exports = yeoman.Base.extend({
 
   initializing: {
     compose: function (args) {

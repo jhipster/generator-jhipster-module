@@ -3,7 +3,6 @@ var path = require('path');
 var util = require('util');
 var yeoman = require('yeoman-generator');
 var chalk = require('chalk');
-var jhipster = require('generator-jhipster');
 var exec = require('child_process').exec;
 var mkdirp = require('mkdirp');
 var packagejs = require(__dirname + '/../../package.json');
@@ -14,7 +13,7 @@ var jhipsterVar = {moduleName: 'module'};
 // Stores JHipster functions
 var jhipsterFunc = {};
 
-module.exports = yeoman.generators.Base.extend({
+module.exports = yeoman.Base.extend({
 
   initializing: {
     displayLogo: function () {
@@ -48,7 +47,7 @@ module.exports = yeoman.generators.Base.extend({
 
   prompting: function () {
     var done = this.async();
-    var defaultAppBaseName = (/^[a-zA-Z0-9_]+$/.test(path.basename(process.cwd())))?path.basename(process.cwd()).replace('generator-jhipster-', ''):'hello-world';
+    var defaultAppBaseName = (/^[a-zA-Z0-9-]+$/.test(path.basename(process.cwd()))) ? path.basename(process.cwd()).replace('generator-jhipster-', '') : 'hello-world';
     var prompts = [
       {
         type: 'input',
