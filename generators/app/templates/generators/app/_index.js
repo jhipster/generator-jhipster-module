@@ -13,12 +13,15 @@ module.exports = yeoman.Base.extend({
 
   initializing: {
     compose: function (args) {
-      this.composeWith('jhipster:modules', {
-        options: {
-          jhipsterVar: jhipsterVar,
-          jhipsterFunc: jhipsterFunc
-        }
-      });
+      this.composeWith('jhipster:modules',
+        {
+          options: {
+            jhipsterVar: jhipsterVar,
+            jhipsterFunc: jhipsterFunc
+          }
+        },
+        this.options.testmode ? {local: require.resolve('generator-jhipster/modules')} : null
+      );
     },
     displayLogo: function () {
       // Have Yeoman greet the user.

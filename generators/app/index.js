@@ -148,6 +148,10 @@ module.exports = yeoman.Base.extend({
       this.template('_package.json', 'package.json', this, {});
       this.template('_LICENSE', 'LICENSE', this, {});
       this.template('_README.md', 'README.md', this, {});
+
+      mkdirp('test/templates/default');
+      this.copy('test/templates/default/.yo-rc.json', 'test/templates/default/.yo-rc.json');
+      this.template('test/test-app.js', 'test/test-app.js', this, {});
     },
 
     writeMainGenTemplates : function () {
