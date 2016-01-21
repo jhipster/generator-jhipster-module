@@ -150,8 +150,8 @@ module.exports = yeoman.Base.extend({
       this.template('_README.md', 'README.md', this, {});
 
       mkdirp('test/templates/default');
-      this.copy('test/templates/default/.yo-rc.json', 'test/templates/default/.yo-rc.json');
-      this.template('test/test-app.js', 'test/test-app.js', this, {});
+      this.copy('test/templates/default/_yo-rc.json', 'test/templates/default/.yo-rc.json');
+      this.template('test/_test-app.js', 'test/test-app.js', this, {});
     },
 
     writeMainGenTemplates : function () {
