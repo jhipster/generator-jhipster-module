@@ -29,7 +29,7 @@
   });
 
   gulp.task('pre-test', function () {
-    return gulp.src('generators/**/*.js')
+    return gulp.src('generators/app/*.js')
       .pipe(istanbul({
         includeUntested: true
       }))
