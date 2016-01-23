@@ -144,7 +144,7 @@ module.exports = yeoman.Base.extend({
       this.copy('gitattributes', '.gitattributes');
       this.copy('gitignore', '.gitignore');
       this.copy('_travis.yml', '.travis.yml');
-      this.copy('_gulpfile.js', '.gulpfile.js');
+      this.copy('_gulpfile.js', 'gulpfile.js');
       this.template('_package.json', 'package.json', this, {});
       this.template('_LICENSE', 'LICENSE', this, {});
       this.template('_README.md', 'README.md', this, {});
