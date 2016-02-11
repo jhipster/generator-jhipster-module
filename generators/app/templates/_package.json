@@ -7,7 +7,6 @@
     "jhipster-module"
   ],
   "homepage": "https://github.com/<%= githubName %>/generator-jhipster-<%= moduleName %>",
-  "bugs": "https://github.com/<%= githubName %>/generator-jhipster-<%= moduleName %>/issues",
   "author": {
     "name": "<%= authorName %>",
     "email": "<%= authorEmail %>",
