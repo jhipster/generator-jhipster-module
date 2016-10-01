@@ -1,5 +1,11 @@
+os:
+    - linux
 language: node_js
 node_js:
-  - v5
-  - v4
-  - '0.12'
+  - "4.5.0"
+before_install:
+    - npm install -g npm
+install:
+    - npm install
+    - npm link
+    - npm test

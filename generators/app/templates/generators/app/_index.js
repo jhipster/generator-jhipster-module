@@ -20,7 +20,7 @@ module.exports = yeoman.Base.extend({
             jhipsterFunc: jhipsterFunc
           }
         },
-        this.options.testmode ? {local: require.resolve('generator-jhipster/modules')} : null
+        this.options.testmode ? {local: require.resolve('generator-jhipster/generators/modules')} : null
       );
     },
     displayLogo: function () {
