@@ -29,7 +29,14 @@ npm update -g generator-jhipster-<%= moduleName %>
 
 # License
 
+<%_ if (license === 'apache') { _%>
 Apache-2.0 © [<%= authorName %>]
+<%_ } else if (license === 'gpl') { _%>
+GPL-3.0 © [<%= authorName %>]
+<%_ } else if (license === 'mit') { _%>
+MIT © [<%= authorName %>]
+<%_ } _%>
+
 
 [npm-image]: https://img.shields.io/npm/v/generator-jhipster-<%= moduleName %>.svg
 [npm-url]: https://npmjs.org/package/generator-jhipster-<%= moduleName %>

@@ -47,7 +47,13 @@
   "scripts": {
     "test": "mocha test/*"
   },
+  <%_ if (license === 'apache') { _%>
   "license": "Apache-2.0",
+  <%_ } else if (license === 'gpl') { _%>
+  "license": "GPL-3.0",
+  <%_ } else if (license === 'mit') { _%>
+  "license": "MIT",
+  <%_ } _%>
   "bugs": {
     "url": "https://github.com/<%= githubName %>/generator-jhipster-<%= moduleName %>/issues"
   }
