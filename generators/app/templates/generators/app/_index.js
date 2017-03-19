@@ -1,8 +1,6 @@
 const chalk = require('chalk');
 const generator = require('yeoman-generator');
 const packagejs = require(__dirname + '/../../package.json');
-const prompts = require('./prompts');
-const yeoman = require('yeoman-generator');
 
 // Stores JHipster variables
 const jhipsterVar = {moduleName: '<%= moduleName %>'};
@@ -24,12 +22,27 @@ module.exports = generator.extend({
         },
         displayLogo () {
             // Have Yeoman greet the user.
-            this.log('Welcome to the ' + chalk.bold.yellow('JHipster <%= moduleName %>') + ' generator! ' + chalk.yellow('v' + packagejs.version + '\n'));
+            console.log('Welcome to the ' + chalk.bold.yellow('JHipster <%= moduleName %>') + ' generator! ' + chalk.yellow('v' + packagejs.version + '\n'));
         }
     },
 
-    prompting: {
-        askMessage: prompts.askMessage
+    prompting() {
+        const done = this.async();
+        const prompts = [
+            {
+                type: 'input',
+                name: 'message',
+                message: 'Please put something',
+                default: 'hello world!'
+            }
+        ];
+
+        this.prompt(prompts).then((props) => {
+            this.props = props;
+            // To access props later use this.props.someOption;
+
+            done();
+        });
     },
 
     writing() {

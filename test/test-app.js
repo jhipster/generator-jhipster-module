@@ -1,10 +1,8 @@
-'use strict';
-
-var util = require('util');
-var path = require('path');
-var fse = require('fs-extra');
-var assert = require('yeoman-assert');
-var helpers = require('yeoman-test');
+const util = require('util');
+const path = require('path');
+const fse = require('fs-extra');
+const assert = require('yeoman-assert');
+const helpers = require('yeoman-test');
 
 const expectedFiles = {
     module : [
@@ -30,64 +28,65 @@ const expectedFiles = {
     ]
 };
 
-describe('JHipster generator module', function () {
-
-    describe('default configuration no license', function () {
-        before(function (done) {
-            helpers.run(path.join( __dirname, '../generators/app'))
-            .withPrompts({
-                moduleName: 'hello-world',
-                moduleDescription: 'hello world',
-                hook: 'none',
-                githubName: 'githubName',
-                authorName: 'authorName',
-                authorEmail: 'mail@mail',
-                authorUrl: 'authorUrl',
-                license: 'no'
-            })
-            .on('end', done);
+describe('JHipster generator module', () => {
+    describe('default configuration no license', () => {
+        beforeEach((done) => {
+            helpers
+                .run(path.join( __dirname, '../generators/app'))
+                .withPrompts({
+                    moduleName: 'hello-world',
+                    moduleDescription: 'hello world',
+                    hook: 'none',
+                    githubName: 'githubName',
+                    authorName: 'authorName',
+                    authorEmail: 'mail@mail',
+                    authorUrl: 'authorUrl',
+                    license: 'no'
+                })
+                .on('end', done);
         });
-        it('generates default files', function () {
+        it('generates default files', () => {
             assert.file(expectedFiles.module);
         });
-        it('doesn\'t generate license', function () {
+        it('doesn\'t generate license', () => {
             assert.noFile(expectedFiles.license);
         });
-        it('doesn\'t generate entity files', function () {
+        it('doesn\'t generate entity files', () => {
             assert.noFile(expectedFiles.entity);
         });
     });
 
-    describe('default configuration license Apache', function () {
-        before(function (done) {
-            helpers.run(path.join( __dirname, '../generators/app'))
-            .withPrompts({
-                moduleName: 'hello-world',
-                moduleDescription: 'hello world',
-                hook: 'none',
-                githubName: 'githubName',
-                authorName: 'authorName',
-                authorEmail: 'mail@mail',
-                authorUrl: 'authorUrl',
-                license: 'apache'
-            })
-            .on('end', done);
+    describe('default configuration license Apache', () => {
+        beforeEach((done) => {
+            helpers
+                .run(path.join( __dirname, '../generators/app'))
+                .withPrompts({
+                    moduleName: 'hello-world',
+                    moduleDescription: 'hello world',
+                    hook: 'none',
+                    githubName: 'githubName',
+                    authorName: 'authorName',
+                    authorEmail: 'mail@mail',
+                    authorUrl: 'authorUrl',
+                    license: 'apache'
+                })
+                .on('end', done);
         });
-        it('generates default files', function () {
+        it('generates default files', () => {
             assert.file(expectedFiles.module);
         });
-        it('generates license Apache', function () {
+        it('generates license Apache', () => {
             assert.file(expectedFiles.license);
             assert.fileContent('README.md', 'Apache-2.0');
             assert.fileContent('package.json', 'Apache-2.0');
         });
-        it('doesn\'t generate entity files', function () {
+        it('doesn\'t generate entity files', () => {
             assert.noFile(expectedFiles.entity);
         });
     });
 
-    describe('default configuration license GNU GPLv3', function () {
-        before(function (done) {
+    describe('default configuration license GNU GPLv3', () => {
+        beforeEach((done) => {
             helpers.run(path.join( __dirname, '../generators/app'))
             .withPrompts({
                 moduleName: 'hello-world',
@@ -101,92 +100,95 @@ describe('JHipster generator module', function () {
             })
             .on('end', done);
         });
-        it('generates default files', function () {
+        it('generates default files', () => {
             assert.file(expectedFiles.module);
         });
-        it('generates license', function () {
+        it('generates license', () => {
             assert.file(expectedFiles.license);
             assert.fileContent('README.md', 'GPL-3.0');
             assert.fileContent('package.json', 'GPL-3.0');
         });
-        it('doesn\'t generate entity files', function () {
+        it('doesn\'t generate entity files', () => {
             assert.noFile(expectedFiles.entity);
         });
     });
 
-    describe('default configuration license MIT', function () {
-        before(function (done) {
-            helpers.run(path.join( __dirname, '../generators/app'))
-            .withPrompts({
-                moduleName: 'hello-world',
-                moduleDescription: 'hello world',
-                hook: 'none',
-                githubName: 'githubName',
-                authorName: 'authorName',
-                authorEmail: 'mail@mail',
-                authorUrl: 'authorUrl',
-                license: 'mit'
-            })
-            .on('end', done);
+    describe('default configuration license MIT', () => {
+        beforeEach((done) => {
+            helpers
+                .run(path.join( __dirname, '../generators/app'))
+                .withPrompts({
+                    moduleName: 'hello-world',
+                    moduleDescription: 'hello world',
+                    hook: 'none',
+                    githubName: 'githubName',
+                    authorName: 'authorName',
+                    authorEmail: 'mail@mail',
+                    authorUrl: 'authorUrl',
+                    license: 'mit'
+                })
+                .on('end', done);
         });
-        it('generates default files', function () {
+        it('generates default files', () => {
             assert.file(expectedFiles.module);
         });
-        it('generates license', function () {
+        it('generates license', () => {
             assert.file(expectedFiles.license);
             assert.fileContent('README.md', 'MIT');
             assert.fileContent('package.json', 'MIT');
         });
-        it('doesn\'t generate entity files', function () {
+        it('doesn\'t generate entity files', () => {
             assert.noFile(expectedFiles.entity);
         });
     });
 
-    describe('hook postEntity on default generator', function () {
-        before(function (done) {
-            helpers.run(path.join( __dirname, '../generators/app'))
-            .withPrompts({
-                moduleName: 'hello-world',
-                moduleDescription: 'hello world',
-                hook: 'postEntity',
-                hookCallback: 'app',
-                githubName: 'githubName',
-                authorName: 'authorName',
-                authorEmail: 'mail@mail',
-                authorUrl: 'authorUrl',
-                license: 'no'
-            })
-            .on('end', done);
+    describe('hook postEntity on default generator', () => {
+        beforeEach((done) => {
+            helpers
+                .run(path.join( __dirname, '../generators/app'))
+                .withPrompts({
+                    moduleName: 'hello-world',
+                    moduleDescription: 'hello world',
+                    hook: 'postEntity',
+                    hookCallback: 'app',
+                    githubName: 'githubName',
+                    authorName: 'authorName',
+                    authorEmail: 'mail@mail',
+                    authorUrl: 'authorUrl',
+                    license: 'no'
+                })
+                .on('end', done);
         });
 
-        it('generates default files', function () {
+        it('generates default files', () => {
             assert.file(expectedFiles.module);
         });
-        it('doesn\'t generate entity files', function () {
+        it('doesn\'t generate entity files', () => {
             assert.noFile(expectedFiles.entity);
         });
     })
 
-    describe('hook postEntity on entity', function () {
-        before(function (done) {
-            helpers.run(path.join( __dirname, '../generators/app'))
-            .withPrompts({
-                moduleName: 'hello-world',
-                moduleDescription: 'hello world',
-                hook: 'postEntity',
-                hookCallback: 'entity',
-                githubName: 'githubName',
-                authorName: 'authorName',
-                authorEmail: 'mail@mail',
-                authorUrl: 'authorUrl',
-                license: 'no'
-            })
-            .on('end', done);
+    describe('hook postEntity on entity', () => {
+        beforeEach((done) => {
+            helpers
+                .run(path.join( __dirname, '../generators/app'))
+                .withPrompts({
+                    moduleName: 'hello-world',
+                    moduleDescription: 'hello world',
+                    hook: 'postEntity',
+                    hookCallback: 'entity',
+                    githubName: 'githubName',
+                    authorName: 'authorName',
+                    authorEmail: 'mail@mail',
+                    authorUrl: 'authorUrl',
+                    license: 'no'
+                })
+                .on('end', done);
         });
-        it('generates default files', function () {
+        it('generates default files', () => {
             assert.file(expectedFiles.module);
         });
-        it('generates entity files', function () {
+        it('generates entity files', () => {
             assert.file(expectedFiles.entity);
         });
     })
