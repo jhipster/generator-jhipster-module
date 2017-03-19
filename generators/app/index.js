@@ -1,23 +1,10 @@
-const util = require('util');
 const chalk = require('chalk');
 const generator = require('yeoman-generator');
 const prompts = require('./prompts');
-
-const path = require('path');
-// var yeoman = require('yeoman-generator');
-const exec = require('child_process').exec;
 const mkdirp = require('mkdirp');
 const packagejs = require('../../package.json');
 
-const JhipsterGenerator = generator.extend({});
-
-// Stores JHipster variables
-const jhipsterVar = {moduleName: 'module'};
-
-// Stores JHipster functions
-let jhipsterFunc = {};
-
-module.exports = JhipsterGenerator.extend({
+module.exports = generator.extend({
     initializing: {
         displayLogo() {
             this.log(' \n' +
@@ -101,9 +88,12 @@ module.exports = JhipsterGenerator.extend({
     end() {
         this.log('\n' + chalk.bold.green('##### USAGE #####'));
         this.log('To begin to work:');
-        this.log('- launch: ' + chalk.yellow.bold('npm install'));
-        this.log('- link: ' + chalk.yellow.bold('npm link'));
-        this.log('- test your module in a JHipster project: ' + chalk.yellow.bold('yo jhipster-' + this.moduleName));
+        this.log('- launch: ' + chalk.yellow.bold('yarn install'));
+        this.log('- link: ' + chalk.yellow.bold('yarn link'));
+        this.log('- test your module in a JHipster project: ');
+        this.log('    - go into your JHipster project');
+        this.log('    - link to your module: ' + chalk.yellow.bold('yarn link generator-jhipster-' + this.moduleName));
+        this.log('    - launch your module: ' + chalk.yellow.bold('yo jhipster-' + this.moduleName));
         this.log('- then, come back here, and begin to code!\n')
     }
 });
