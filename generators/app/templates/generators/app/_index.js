@@ -1,9 +1,9 @@
 const chalk = require('chalk');
 const generator = require('yeoman-generator');
-const packagejs = require(__dirname + '/../../package.json');
+const packagejs = require('../../package.json');
 
 // Stores JHipster variables
-const jhipsterVar = {moduleName: '<%= moduleName %>'};
+const jhipsterVar = { moduleName: '<%= moduleName %>' };
 
 // Stores JHipster functions
 const jhipsterFunc = {};
@@ -13,16 +13,13 @@ module.exports = generator.extend({
     initializing: {
         compose() {
             this.composeWith('jhipster:modules',
-                {
-                    jhipsterVar: jhipsterVar,
-                    jhipsterFunc: jhipsterFunc
-                },
-                this.options.testmode ? {local: require.resolve('generator-jhipster/generators/modules')} : null
+                { jhipsterVar, jhipsterFunc },
+                this.options.testmode ? { local: require.resolve('generator-jhipster/generators/modules') } : null
             );
         },
-        displayLogo () {
+        displayLogo() {
             // Have Yeoman greet the user.
-            console.log('Welcome to the ' + chalk.bold.yellow('JHipster <%= moduleName %>') + ' generator! ' + chalk.yellow('v' + packagejs.version + '\n'));
+            this.log(`Welcome to the ${chalk.bold.yellow('JHipster <%= moduleName %>')} generator! ${chalk.yellow(`v${packagejs.version}\n`)}`);
         }
     },
 
@@ -66,22 +63,24 @@ module.exports = generator.extend({
 
         this.message = this.props.message;
 
-        console.log('\n--- some config read from config ---');
-        console.log('baseName=' + this.baseName);
-        console.log('packageName=' + this.packageName);
-        console.log('angularAppName=' + this.angularAppName);
-        console.log('clientFramework=' + this.clientFramework);
-        console.log('clientPackageManager=' + this.clientPackageManager);
-        console.log('\nmessage=' + this.message);
-        console.log('------\n');
+        this.log('\n--- some config read from config ---');
+        this.log(`baseName=${this.baseName}`);
+        this.log(`packageName=${this.packageName}`);
+        this.log(`angularAppName=${this.angularAppName}`);
+        this.log(`clientFramework=${this.clientFramework}`);
+        this.log(`clientPackageManager=${this.clientPackageManager}`);
+        this.log(`javaDir=${javaDir}`);
+        this.log(`resourceDir=${resourceDir}`);
+        this.log(`webappDir=${webappDir}`);
+        this.log(`\nmessage=${this.message}`);
+        this.log('------\n');
 
         this.template('dummy.txt', 'dummy.txt');
-
         <%_ if (hook !== 'none') { _%>
         try {
             jhipsterFunc.registerModule('generator-jhipster-<%= moduleName %>', '<%= hookFor %>', '<%= hookType %>', '<%= hookCallback %>', '<%= moduleDescription %>');
         } catch (err) {
-            this.log(chalk.red.bold('WARN!') + ' Could not register as a jhipster <%= hookFor %> <%= hookType %> creation hook...\n');
+            this.log(`${chalk.red.bold('WARN!')} Could not register as a jhipster <%= hookFor %> <%= hookType %> creation hook...\n`);
         }
         <%_ } _%>
     },
@@ -112,6 +111,6 @@ module.exports = generator.extend({
     },
 
     end() {
-        console.log('End of <%= moduleName %> generator');
+        this.log('End of <%= moduleName %> generator');
     }
 });

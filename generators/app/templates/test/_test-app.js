@@ -1,3 +1,5 @@
+/* global describe, beforeEach, it*/
+
 const path = require('path');
 const fse = require('fs-extra');
 const assert = require('yeoman-assert');
@@ -11,9 +13,9 @@ describe('JHipster generator <%= moduleName %>', () => {
     describe('simple test', () => {
         beforeEach((done) => {
             helpers
-                .run(path.join( __dirname, '../generators/app'))
-                .inTmpDir(function (dir) {
-                    fse.copySync(path.join(__dirname, '../test/templates/default'), dir)
+                .run(path.join(__dirname, '../generators/app'))
+                .inTmpDir((dir) => {
+                    fse.copySync(path.join(__dirname, '../test/templates/default'), dir);
                 })
                 .withOptions({
                     testmode: true

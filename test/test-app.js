@@ -1,13 +1,13 @@
-const util = require('util');
+/* global describe, beforeEach, it*/
+
 const path = require('path');
-const fse = require('fs-extra');
 const assert = require('yeoman-assert');
 const helpers = require('yeoman-test');
 
 const expectedFiles = {
-    module : [
+    module: [
         '.editorconfig',
-        '.eslintrc',
+        '.eslintrc.json',
         '.gitattributes',
         '.gitignore',
         '.travis.yml',
@@ -19,11 +19,11 @@ const expectedFiles = {
         'generators/app/index.js',
         'generators/app/templates/dummy.txt'
     ],
-    entity : [
+    entity: [
         'generators/entity/index.js',
         'generators/entity/templates/dummy.txt'
     ],
-    license : [
+    license: [
         'LICENSE'
     ]
 };
@@ -32,7 +32,7 @@ describe('JHipster generator module', () => {
     describe('default configuration no license', () => {
         beforeEach((done) => {
             helpers
-                .run(path.join( __dirname, '../generators/app'))
+                .run(path.join(__dirname, '../generators/app'))
                 .withPrompts({
                     moduleName: 'hello-world',
                     moduleDescription: 'hello world',
@@ -59,7 +59,7 @@ describe('JHipster generator module', () => {
     describe('default configuration license Apache', () => {
         beforeEach((done) => {
             helpers
-                .run(path.join( __dirname, '../generators/app'))
+                .run(path.join(__dirname, '../generators/app'))
                 .withPrompts({
                     moduleName: 'hello-world',
                     moduleDescription: 'hello world',
@@ -87,7 +87,7 @@ describe('JHipster generator module', () => {
 
     describe('default configuration license GNU GPLv3', () => {
         beforeEach((done) => {
-            helpers.run(path.join( __dirname, '../generators/app'))
+            helpers.run(path.join(__dirname, '../generators/app'))
             .withPrompts({
                 moduleName: 'hello-world',
                 moduleDescription: 'hello world',
@@ -116,7 +116,7 @@ describe('JHipster generator module', () => {
     describe('default configuration license MIT', () => {
         beforeEach((done) => {
             helpers
-                .run(path.join( __dirname, '../generators/app'))
+                .run(path.join(__dirname, '../generators/app'))
                 .withPrompts({
                     moduleName: 'hello-world',
                     moduleDescription: 'hello world',
@@ -145,7 +145,7 @@ describe('JHipster generator module', () => {
     describe('hook postEntity on default generator', () => {
         beforeEach((done) => {
             helpers
-                .run(path.join( __dirname, '../generators/app'))
+                .run(path.join(__dirname, '../generators/app'))
                 .withPrompts({
                     moduleName: 'hello-world',
                     moduleDescription: 'hello world',
@@ -166,12 +166,12 @@ describe('JHipster generator module', () => {
         it('doesn\'t generate entity files', () => {
             assert.noFile(expectedFiles.entity);
         });
-    })
+    });
 
     describe('hook postEntity on entity', () => {
         beforeEach((done) => {
             helpers
-                .run(path.join( __dirname, '../generators/app'))
+                .run(path.join(__dirname, '../generators/app'))
                 .withPrompts({
                     moduleName: 'hello-world',
                     moduleDescription: 'hello world',
@@ -191,5 +191,5 @@ describe('JHipster generator module', () => {
         it('generates entity files', () => {
             assert.file(expectedFiles.entity);
         });
-    })
+    });
 });

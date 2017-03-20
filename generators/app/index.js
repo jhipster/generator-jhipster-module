@@ -6,31 +6,31 @@ const packagejs = require('../../package.json');
 module.exports = generator.extend({
     initializing: {
         displayLogo() {
-            this.log(' \n' +
-            chalk.red.bold('               Three::Modules\n') +
-            chalk.red.bold('           for:::the::Elven-Kings\n') +
-            chalk.red.bold('        under:the:sky,:Seven:for:the\n') +
-            chalk.red.bold('      Dwarf-Lords::in::their::halls:of\n') +
-            chalk.red.bold('     stone,:Nine             for:Mortal\n') +
-            chalk.red.bold('    :::Men:::' + chalk.yellow('    ________') + '     doomed::to\n') +
-            chalk.red.bold('  die.:One' + chalk.yellow('    _,-\'...:... `-.    ') + 'for:::the\n') +
-            chalk.red.bold(' ::Dark::' + chalk.yellow('   ,- .:::::::::::. `. ') + 'Hipster::on\n') +
-            chalk.red.bold(' his:dark' + chalk.yellow(' ,\'  .:::::::::::::.  `.  ') + ':throne:\n') +
-            chalk.red.bold('In:::the' + chalk.yellow(' /    :::: Java :::::    \\  ') + 'Land::of\n') +
-            chalk.red.bold('JHipster' + chalk.yellow(' \\    ::: Hipster :::    /  ') + ':where::\n') +
-            chalk.red.bold(' ::the:::' + chalk.yellow(' \'.  \':::::::::::::\'  ,\'  ') + 'Shadows:\n') +
-            chalk.red.bold('  lie::One' + chalk.yellow('  `. ``:::::::::\'\' ,\'  ') + 'Module::to\n') +
-            chalk.red.bold('  ::rule::' + chalk.yellow('    `-._```:\'\'\'_,-\'     ') + '::them::\n') +
-            chalk.red.bold('   all,::One' + chalk.yellow('      `-----\'       ') + 'Module::to\n') +
-            chalk.red.bold('    ::find:::                  them,:One\n') +
-            chalk.red.bold('     Module:::::to          bring::them\n') +
-            chalk.red.bold('       all::and::in:the:darkness:bind\n') +
-            chalk.red.bold('         them:In:the:Land:of:JHipster\n') +
-            chalk.red.bold('            where:::the::Shadows\n') +
-            chalk.red.bold('                 :::lie.:::\n'));
+            this.log(`
+${chalk.red.bold('               Three::Modules')}
+${chalk.red.bold('           for:::the::Elven-Kings')}
+${chalk.red.bold('        under:the:sky,:Seven:for:the')}
+${chalk.red.bold('      Dwarf-Lords::in::their::halls:of')}
+${chalk.red.bold('     stone,:Nine             for:Mortal')}
+${chalk.red.bold(`    :::Men:::${chalk.yellow('    ________')}     doomed::to`)}
+${chalk.red.bold(`  die.:One${chalk.yellow('    _,-\'...:... `-.    ')}for:::the`)}
+${chalk.red.bold(` ::Dark::${chalk.yellow('   ,- .:::::::::::. `. ')}Hipster::on`)}
+${chalk.red.bold(` his:dark${chalk.yellow(' ,\'  .:::::::::::::.  `.  ')}:throne:`)}
+${chalk.red.bold(`In:::the${chalk.yellow(' /    :::: Java :::::    \\  ')}Land::of`)}
+${chalk.red.bold(`JHipster${chalk.yellow(' \\    ::: Hipster :::    /  ')}:where::`)}
+${chalk.red.bold(` ::the:::${chalk.yellow(' \'.  \':::::::::::::\'  ,\'  ')}Shadows:`)}
+${chalk.red.bold(`  lie::One${chalk.yellow('  `. ``:::::::::\'\' ,\'  ')}Module::to`)}
+${chalk.red.bold(`  ::rule::${chalk.yellow('    `-._```:\'\'\'_,-\'     ')}::them::`)}
+${chalk.red.bold(`   all,::One${chalk.yellow('      `-----\'       ')}Module::to`)}
+${chalk.red.bold('    ::find:::                  them,:One')}
+${chalk.red.bold('     Module:::::to          bring::them')}
+${chalk.red.bold('       all::and::in:the:darkness:bind')}
+${chalk.red.bold('         them:In:the:Land:of:JHipster')}
+${chalk.red.bold('            where:::the::Shadows')}
+${chalk.red.bold('                 :::lie.:::')}`);
 
             this.log(chalk.white.bold('         http://jhipster.github.io\n'));
-            this.log(chalk.white('Welcome to the ' + chalk.bold('JHipster Module') + ' Generator! ' + chalk.yellow('v' + packagejs.version + '\n')));
+            this.log(chalk.white(`Welcome to the ${chalk.bold('JHipster Module')} Generator! ${chalk.yellow(`v${packagejs.version}\n`)}`));
         }
     },
 
@@ -66,23 +66,21 @@ module.exports = generator.extend({
                 default: 'none'
             },
             {
-                when: function (props) {
-                    return props.hook != 'none';
-                },
+                when: props => props.hook !== 'none',
                 type: 'list',
                 name: 'hookCallback',
                 message: 'Do you want to add a subgenerator for this hook?',
                 choices: [
-                    {name: 'Yes, Add a subgenerator', value: 'entity'},
-                    {name: 'No, Hook to default generator', value: 'app'}
+                    { name: 'Yes, Add a subgenerator', value: 'entity' },
+                    { name: 'No, Hook to default generator', value: 'app' }
                 ],
                 default: 'entity'
             },
             {
                 type: 'input',
                 name: 'githubName',
-                validate: input => {
-                    if (/^([a-zA-Z0-9_]*)$/.test(input) && input != '') return true;
+                validate: (input) => {
+                    if (/^([a-zA-Z0-9_]*)$/.test(input) && input !== '') return true;
                     return 'Your username is mandatory, cannot contain special characters or a blank space';
                 },
                 store: true,
@@ -92,7 +90,7 @@ module.exports = generator.extend({
                 type: 'input',
                 name: 'authorName',
                 message: 'Who are you? Firstname Lastname',
-                default: "Firstname Lastname",
+                default: 'Firstname Lastname',
                 store: true
             },
             {
@@ -112,10 +110,10 @@ module.exports = generator.extend({
                 name: 'license',
                 message: 'Do you want to add a license?',
                 choices: [
-                    {name: 'No license', value: 'no'},
-                    {name: 'Apache License 2.0', value: 'apache'},
-                    {name: 'GNU General Public License v3.0', value: 'gnu'},
-                    {name: 'MIT License', value: 'mit'}
+                    { name: 'No license', value: 'no' },
+                    { name: 'Apache License 2.0', value: 'apache' },
+                    { name: 'GNU General Public License v3.0', value: 'gnu' },
+                    { name: 'MIT License', value: 'mit' }
                 ],
                 default: 'no'
             }
@@ -127,7 +125,7 @@ module.exports = generator.extend({
             this.moduleDescription = props.moduleDescription;
             this.hook = props.hook;
             this.hookCallback = props.hookCallback;
-            if (this.hook == 'postEntity') {
+            if (this.hook === 'postEntity') {
                 this.hookType = 'post';
                 this.hookFor = 'entity';
             }
@@ -152,7 +150,7 @@ module.exports = generator.extend({
 
         // copy general files
         this.template('editorconfig', '.editorconfig');
-        this.template('eslintrc', '.eslintrc');
+        this.template('eslintrc.json', '.eslintrc.json');
         this.template('gitattributes', '.gitattributes');
         this.template('gitignore', '.gitignore');
         this.template('_travis.yml', '.travis.yml');
@@ -178,7 +176,7 @@ module.exports = generator.extend({
         this.template('generators/app/templates/_dummy.txt', 'generators/app/templates/dummy.txt');
 
         // copy files for the hook
-        if (this.hook == 'none' || this.hookCallback == 'app'){
+        if (this.hook === 'none' || this.hookCallback === 'app') {
             return;
         }
         mkdirp('generators/entity/templates');
@@ -187,14 +185,14 @@ module.exports = generator.extend({
     },
 
     end() {
-        this.log('\n' + chalk.bold.green('##### USAGE #####'));
+        this.log(`\n${chalk.bold.green('##### USAGE #####')}`);
         this.log('To begin to work:');
-        this.log('- launch: ' + chalk.yellow.bold('yarn install'));
-        this.log('- link: ' + chalk.yellow.bold('yarn link'));
+        this.log(`- launch: ${chalk.yellow.bold('yarn install')}`);
+        this.log(`- link: ${chalk.yellow.bold('yarn link')}`);
         this.log('- test your module in a JHipster project: ');
         this.log('    - go into your JHipster project');
-        this.log('    - link to your module: ' + chalk.yellow.bold('yarn link generator-jhipster-' + this.moduleName));
-        this.log('    - launch your module: ' + chalk.yellow.bold('yo jhipster-' + this.moduleName));
-        this.log('- then, come back here, and begin to code!\n')
+        this.log(`    - link to your module: ${chalk.yellow.bold(`yarn link generator-jhipster-${this.moduleName}`)}`);
+        this.log(`    - launch your module: ${chalk.yellow.bold(`yo jhipster-${this.moduleName}`)}`);
+        this.log('- then, come back here, and begin to code!\n');
     }
 });
