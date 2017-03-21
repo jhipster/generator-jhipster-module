@@ -150,6 +150,7 @@ ${chalk.red.bold('                 :::lie.:::')}\n`);
 
         // copy general files
         this.template('editorconfig', '.editorconfig');
+        this.template('eslintignore', '.eslintignore');
         this.template('eslintrc.json', '.eslintrc.json');
         this.template('gitattributes', '.gitattributes');
         this.template('gitignore', '.gitignore');

@@ -7,6 +7,7 @@ const helpers = require('yeoman-test');
 const expectedFiles = {
     module: [
         '.editorconfig',
+        '.eslintignore',
         '.eslintrc.json',
         '.gitattributes',
         '.gitignore',

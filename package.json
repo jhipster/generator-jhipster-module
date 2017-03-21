@@ -51,7 +51,7 @@
     "pretest": "eslint .",
     "lint": "eslint .",
     "lint-fix": "eslint . --fix",
-    "test": "mocha test/*"
+    "test": "mocha test/* --slow 0 --reporter spec"
   },
   "license": "Apache-2.0",
   "bugs": {
