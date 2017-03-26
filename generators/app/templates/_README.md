@@ -47,11 +47,11 @@ npm update -g generator-jhipster-<%= moduleName %>
 # License
 
 <%_ if (license === 'apache') { _%>
-Apache-2.0 © [<%= authorName %>]
+Apache-2.0 © [<%= authorName %>](<%= authorUrl %>)
 <%_ } else if (license === 'gpl') { _%>
-GPL-3.0 © [<%= authorName %>]
+GPL-3.0 © [<%= authorName %>](<%= authorUrl %>)
 <%_ } else if (license === 'mit') { _%>
-MIT © [<%= authorName %>]
+MIT © [<%= authorName %>](<%= authorUrl %>)
 <%_ } _%>
 
 
