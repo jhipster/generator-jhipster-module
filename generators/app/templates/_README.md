@@ -14,6 +14,22 @@ As this is a [JHipster](http://jhipster.github.io/) module, we expect you have J
 
 # Installation
 
+## With Yarn
+
+To install this module:
+
+```bash
+yarn global add generator-jhipster-<%= moduleName %>
+```
+
+To update this module:
+
+```bash
+yarn global upgrade generator-jhipster-<%= moduleName %>
+```
+
+## With NPM
+
 To install this module:
 
 ```bash
@@ -21,6 +37,7 @@ npm install -g generator-jhipster-<%= moduleName %>
 ```
 
 To update this module:
+
 ```bash
 npm update -g generator-jhipster-<%= moduleName %>
 ```
@@ -30,11 +47,11 @@ npm update -g generator-jhipster-<%= moduleName %>
 # License
 
 <%_ if (license === 'apache') { _%>
-Apache-2.0 © [<%= authorName %>]
+Apache-2.0 © [<%= authorName %>](<%= authorUrl %>)
 <%_ } else if (license === 'gpl') { _%>
-GPL-3.0 © [<%= authorName %>]
+GPL-3.0 © [<%= authorName %>](<%= authorUrl %>)
 <%_ } else if (license === 'mit') { _%>
-MIT © [<%= authorName %>]
+MIT © [<%= authorName %>](<%= authorUrl %>)
 <%_ } _%>
 
 

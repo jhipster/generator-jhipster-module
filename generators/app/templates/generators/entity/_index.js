@@ -1,93 +1,96 @@
-'use strict';
-
-var yeoman = require('yeoman-generator');
-var chalk = require('chalk');
-var packagejs = require(__dirname + '/../../package.json');
+const chalk = require('chalk');
+const generator = require('yeoman-generator');
+const packagejs = require(__dirname + '/../../package.json');
 
 // Stores JHipster variables
-var jhipsterVar = {moduleName: '<%= moduleName %>'};
+const jhipsterVar = {moduleName: '<%= moduleName %>'};
 
 // Stores JHipster functions
-var jhipsterFunc = {};
+const jhipsterFunc = {};
 
-module.exports = yeoman.Base.extend({
+module.exports = generator.extend({
 
-  initializing: {
-
-    compose: function (args) {
-      this.entityConfig = this.options.entityConfig;
-      this.composeWith('jhipster:modules', {
-        options: {
-          jhipsterVar: jhipsterVar,
-          jhipsterFunc: jhipsterFunc
+    initializing: {
+        compose() {
+            this.entityConfig = this.options.entityConfig;
+            this.composeWith('jhipster:modules', {
+                jhipsterVar: jhipsterVar,
+                jhipsterFunc: jhipsterFunc
+            });
+        },
+        displayLogo() {
+            console.log(chalk.white('Running ' + chalk.bold('JHipster <%= moduleName %>') + ' Generator! ' + chalk.yellow('v' + packagejs.version + '\n')));
+        },
+        validate() {
+            // this shouldnt be run directly
+            if (!this.entityConfig) {
+                this.env.error(chalk.red.bold('ERROR!') + ' This sub generator should be used only from JHipster and cannot be run directly...\n');
+            }
         }
-      });
     },
 
-    displayLogo: function () {
-      this.log(chalk.white('Running ' + chalk.bold('JHipster <%= moduleName %>') + ' Generator! ' + chalk.yellow('v' + packagejs.version + '\n')));
+    prompting() {
+        // don't prompt if data are imported from a file
+        if (this.entityConfig.useConfigurationFile == true && this.entityConfig.data && typeof this.entityConfig.data.yourOptionKey !== 'undefined') {
+            this.yourOptionKey = this.entityConfig.data.yourOptionKey;
+            return;
+        }
+        const done = this.async();
+        const prompts = [
+            {
+                type: 'confirm',
+                name: 'enableOption',
+                message: 'Some option here?',
+                default: false
+            }
+        ];
+
+        this.prompt(prompts).then((props) => {
+            this.props = props;
+            // To access props later use this.props.someOption;
+
+            done();
+        });
     },
 
-    validate: function () {
-      // this shouldnt be run directly
-      if (!this.entityConfig) {
-        this.env.error(chalk.red.bold('ERROR!') + ' This sub generator should be used only from JHipster and cannot be run directly...\n');
-      }
-    }
-  },
+    writing() {
+        updateFiles() {
 
-  prompting: function () {
-    // don't prompt if data are imported from a file
-    if (this.entityConfig.useConfigurationFile == true &&  this.entityConfig.data && typeof this.entityConfig.data.yourOptionKey !== 'undefined') {
-      this.yourOptionKey = this.entityConfig.data.yourOptionKey;
-      return;
-    }
-    var done = this.async();
-    var prompts = [
-      {
-        type: 'confirm',
-        name: 'enableOption',
-        message: 'Some option here?',
-        default: false
-      }
-    ];
+            this.baseName = jhipsterVar.baseName;
+            this.packageName = jhipsterVar.packageName;
+            this.angularAppName = jhipsterVar.angularAppName;
+            this.frontendBuilder = jhipsterVar.frontendBuilder;
 
-    this.prompt(prompts, function (props) {
-      this.props = props;
-      // To access props later use this.props.someOption;
+            var webappDir = jhipsterVar.webappDir,
+            javaTemplateDir = 'src/main/java/package',
+            javaDir = jhipsterVar.javaDir,
+            resourceDir = jhipsterVar.resourceDir,
+            entityName = this.entityConfig.entityClass;
 
-      done();
-    }.bind(this));
-  },
-  writing : {
-    updateFiles: function () {
+            // do your stuff here
+        },
 
-      this.baseName = jhipsterVar.baseName;
-      this.packageName = jhipsterVar.packageName;
-      this.angularAppName = jhipsterVar.angularAppName;
-      this.frontendBuilder = jhipsterVar.frontendBuilder;
+        writeFiles() {
+            // function to use directly template
+            this.template = function (source, destination) {
+                this.fs.copyTpl(
+                    this.templatePath(source),
+                    this.destinationPath(destination),
+                    this
+                );
+            };
 
-      var webappDir = jhipsterVar.webappDir,
-      javaTemplateDir = 'src/main/java/package',
-      javaDir = jhipsterVar.javaDir,
-      resourceDir = jhipsterVar.resourceDir,
-      entityName = this.entityConfig.entityClass;
+            this.template('dummy.txt', 'dummy.txt', this, {});
+        },
 
-      // do your stuff here
+        updateConfig() {
+            jhipsterFunc.updateEntityConfig(this.entityConfig.filename, 'yourOptionKey', this.yourOptionKey);
+        }
     },
 
-    writeFiles : function () {
-      this.template('dummy.txt', 'dummy.txt', this, {});
-    },
-
-    updateConfig : function() {
-      jhipsterFunc.updateEntityConfig(this.entityConfig.filename, 'yourOptionKey', this.yourOptionKey);
+    end() {
+        if (this.yourOptionKey){
+            console.log('\n' + chalk.bold.green('<%= moduleName %> enabled'));
+        }
     }
-  },
-
-  end: function () {
-    if (this.yourOptionKey){
-      this.log('\n' + chalk.bold.green('<%= moduleName %> enabled'));
-    }
-  }
 });

@@ -3,20 +3,36 @@
 > JHipster module, used to create a JHipster module - "*One JHipster module to rule them all*"
 
 <div align="center">
-  <a href="http://jhipster.github.io">
-    <img src="https://github.com/jhipster/generator-jhipster-module/raw/master/images/logo-jhipster.png">
-  </a>
+    <a href="http://jhipster.github.io">
+        <img src="https://github.com/jhipster/generator-jhipster-module/raw/master/images/logo-jhipster.png">
+    </a>
 </div>
 
 # Introduction
 
-This is **not really** a [JHipster](http://jhipster.github.io/) module, that is meant to **not** be used in a JHipster application. This module is used to generate a new template for coding a new JHipster module. A JHipster module to create a JHipster module :cyclone:
+This is **not really** a [JHipster](http://jhipster.github.io/) module, that is meant to **not** be used in a JHipster application. This module is used to generate a new template for coding a new JHipster module. A JHipster module to create a JHipster module.
 
 # Prerequisites
 
 Reading this [JHipster module](https://jhipster.github.io/modules/creating_a_module.html)
 
 # Installation
+
+## With Yarn
+
+To install this module:
+
+```bash
+yarn global add generator-jhipster-module
+```
+
+To update this module:
+
+```bash
+yarn global upgrade generator-jhipster-module
+```
+
+## With NPM
 
 To install this module:
 
