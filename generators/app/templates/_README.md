@@ -60,4 +60,4 @@ MIT © [<%= authorName %>](<%= authorUrl %>)
 [travis-image]: https://travis-ci.org/<%= githubName %>/generator-jhipster-<%= moduleName %>.svg?branch=master
 [travis-url]: https://travis-ci.org/<%= githubName %>/generator-jhipster-<%= moduleName %>
 [daviddm-image]: https://david-dm.org/<%= githubName %>/generator-jhipster-<%= moduleName %>.svg?theme=shields.io
-[daviddm-url]: https://david-dm.org/<%= githubName %>/generator-jhipster-module
+[daviddm-url]: https://david-dm.org/<%= githubName %>/generator-jhipster-<%= moduleName %>
