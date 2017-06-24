@@ -10,12 +10,12 @@ const deps = [
 ];
 
 describe('JHipster generator <%= moduleName %>', () => {
-    describe('simple test', () => {
+    describe('Test with Maven and Angular2', () => {
         beforeEach((done) => {
             helpers
                 .run(path.join(__dirname, '../generators/app'))
                 .inTmpDir((dir) => {
-                    fse.copySync(path.join(__dirname, '../test/templates/default'), dir);
+                    fse.copySync(path.join(__dirname, '../test/templates/maven-angular2'), dir);
                 })
                 .withOptions({
                     testmode: true
@@ -29,7 +29,33 @@ describe('JHipster generator <%= moduleName %>', () => {
 
         it('generate dummy.txt file', () => {
             assert.file([
-                'dummy.txt'
+                'dummy-maven.txt',
+                'dummy-angular2.txt',
+            ]);
+        });
+    });
+
+    describe('Test with Gradle and Angular1', () => {
+        beforeEach((done) => {
+            helpers
+                .run(path.join(__dirname, '../generators/app'))
+                .inTmpDir((dir) => {
+                    fse.copySync(path.join(__dirname, '../test/templates/gradle-angular1'), dir);
+                })
+                .withOptions({
+                    testmode: true
+                })
+                .withPrompts({
+                    message: 'simple message to say hello'
+                })
+                .withGenerators(deps)
+                .on('end', done);
+        });
+
+        it('generate dummy.txt file', () => {
+            assert.file([
+                'dummy-gradle.txt',
+                'dummy-angular1.txt',
             ]);
         });
     });

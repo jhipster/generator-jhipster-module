@@ -1,6 +1,14 @@
+const util = require('util');
 const chalk = require('chalk');
 const generator = require('yeoman-generator');
 const packagejs = require(__dirname + '/../../package.json');
+const semver = require('semver');
+const shelljs = require('shelljs');
+const BaseGenerator = require('generator-jhipster/generators/generator-base');
+// const jhipsterUtils = require('generator-jhipster/generators/util');
+
+const JhipsterGenerator = generator.extend({});
+util.inherits(JhipsterGenerator, BaseGenerator);
 
 // Stores JHipster variables
 const jhipsterVar = {moduleName: '<%= moduleName %>'};
@@ -8,7 +16,17 @@ const jhipsterVar = {moduleName: '<%= moduleName %>'};
 // Stores JHipster functions
 const jhipsterFunc = {};
 
-module.exports = generator.extend({
+module.exports = JhipsterGenerator.extend({
+    _getConfig() {
+        const fromPath = '.yo-rc.json';
+        if (shelljs.test('-f', fromPath)) {
+            const fileData = this.fs.readJSON(fromPath);
+            if (fileData && fileData['generator-jhipster']) {
+                return fileData['generator-jhipster'];
+            }
+        }
+        return false;
+    },
 
     initializing: {
         compose() {

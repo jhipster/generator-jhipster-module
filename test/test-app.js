@@ -15,7 +15,8 @@ const expectedFiles = {
         'gulpfile.js',
         'package.json',
         'README.md',
-        'test/templates/default/.yo-rc.json',
+        'test/templates/maven-angular2/.yo-rc.json',
+        'test/templates/gradle-angular1/.yo-rc.json',
         'test/test-app.js',
         'generators/app/index.js',
         'generators/app/templates/dummy.txt'
