@@ -5,16 +5,11 @@ const packagejs = require('../../package.json');
 const semver = require('semver');
 const shelljs = require('shelljs');
 const BaseGenerator = require('generator-jhipster/generators/generator-base');
+const constants = require('generator-jhipster/generators/generator-constants');
 // const jhipsterUtils = require('generator-jhipster/generators/util');
 
 const JhipsterGenerator = generator.extend({});
 util.inherits(JhipsterGenerator, BaseGenerator);
-
-// Stores JHipster variables
-const jhipsterVar = { moduleName: '<%= moduleName %>' };
-
-// Stores JHipster functions
-const jhipsterFunc = {};
 
 module.exports = JhipsterGenerator.extend({
     _getConfig() {
@@ -29,12 +24,6 @@ module.exports = JhipsterGenerator.extend({
     },
 
     initializing: {
-        compose() {
-            this.composeWith('jhipster:modules',
-                { jhipsterVar, jhipsterFunc },
-                this.options.testmode ? { local: require.resolve('generator-jhipster/generators/modules') } : null
-            );
-        },
         displayLogo() {
             // it's here to show that you can use functions from generator-jhipster
             // this function is in: generator-jhipster/generators/generator-base.js
@@ -84,20 +73,26 @@ module.exports = JhipsterGenerator.extend({
             );
         };
 
+        // read config from .yo-rc.json
         this.baseName = config.baseName;
         this.packageName = config.packageName;
+        this.packageFolder = config.packageFolder;
         this.clientFramework = config.clientFramework;
         this.clientPackageManager = config.clientPackageManager;
         this.buildTool = config.buildTool;
 
+        // use function in generator-base.js from generator-jhipster
         this.angularAppName = this.getAngularAppName();
 
-        const javaDir = jhipsterVar.javaDir;
-        const resourceDir = jhipsterVar.resourceDir;
-        const webappDir = jhipsterVar.webappDir;
+        // use constants from generator-constants.js
+        const javaDir = `${constants.SERVER_MAIN_SRC_DIR + this.packageFolder}/`;
+        const resourceDir = constants.SERVER_MAIN_RES_DIR;
+        const webappDir = constants.CLIENT_MAIN_SRC_DIR;
 
+        // variable from questions
         this.message = this.props.message;
 
+        // show all variables
         this.log('\n--- some config read from config ---');
         this.log(`baseName=${this.baseName}`);
         this.log(`packageName=${this.packageName}`);
@@ -112,6 +107,8 @@ module.exports = JhipsterGenerator.extend({
         this.log(`javaDir=${javaDir}`);
         this.log(`resourceDir=${resourceDir}`);
         this.log(`webappDir=${webappDir}`);
+
+        this.log('\n--- variables from questions ---');
         this.log(`\nmessage=${this.message}`);
         this.log('------\n');
 
