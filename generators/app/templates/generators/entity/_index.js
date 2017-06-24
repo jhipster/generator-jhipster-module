@@ -5,16 +5,11 @@ const packagejs = require(__dirname + '/../../package.json');
 const semver = require('semver');
 const shelljs = require('shelljs');
 const BaseGenerator = require('generator-jhipster/generators/generator-base');
+const constants = require('generator-jhipster/generators/generator-constants');
 // const jhipsterUtils = require('generator-jhipster/generators/util');
 
 const JhipsterGenerator = generator.extend({});
 util.inherits(JhipsterGenerator, BaseGenerator);
-
-// Stores JHipster variables
-const jhipsterVar = {moduleName: '<%= moduleName %>'};
-
-// Stores JHipster functions
-const jhipsterFunc = {};
 
 module.exports = JhipsterGenerator.extend({
     _getConfig() {
@@ -29,18 +24,11 @@ module.exports = JhipsterGenerator.extend({
     },
 
     initializing: {
-        compose() {
-            this.entityConfig = this.options.entityConfig;
-            this.composeWith('jhipster:modules', {
-                jhipsterVar: jhipsterVar,
-                jhipsterFunc: jhipsterFunc
-            });
-        },
         displayLogo() {
-            console.log(chalk.white('Running ' + chalk.bold('JHipster <%= moduleName %>') + ' Generator! ' + chalk.yellow('v' + packagejs.version + '\n')));
+            this.log(chalk.white('Running ' + chalk.bold('JHipster <%= moduleName %>') + ' Generator! ' + chalk.yellow('v' + packagejs.version + '\n')));
         },
         validate() {
-            // this shouldnt be run directly
+            // this shouldn't be run directly
             if (!this.entityConfig) {
                 this.env.error(chalk.red.bold('ERROR!') + ' This sub generator should be used only from JHipster and cannot be run directly...\n');
             }
@@ -71,19 +59,28 @@ module.exports = JhipsterGenerator.extend({
         });
     },
 
-    writing() {
+    writing: {
         updateFiles() {
+            // read config from .yo-rc.json
+            const config = this._getConfig();
 
-            this.baseName = jhipsterVar.baseName;
-            this.packageName = jhipsterVar.packageName;
-            this.angularAppName = jhipsterVar.angularAppName;
-            this.frontendBuilder = jhipsterVar.frontendBuilder;
+            // read config from .yo-rc.json
+            this.baseName = config.baseName;
+            this.packageName = config.packageName;
+            this.packageFolder = config.packageFolder;
+            this.clientFramework = config.clientFramework;
+            this.clientPackageManager = config.clientPackageManager;
+            this.buildTool = config.buildTool;
 
-            var webappDir = jhipsterVar.webappDir,
-            javaTemplateDir = 'src/main/java/package',
-            javaDir = jhipsterVar.javaDir,
-            resourceDir = jhipsterVar.resourceDir,
-            entityName = this.entityConfig.entityClass;
+            // use function in generator-base.js from generator-jhipster
+            this.angularAppName = this.getAngularAppName();
+
+            // use constants from generator-constants.js
+            const javaDir = `${constants.SERVER_MAIN_SRC_DIR + this.packageFolder}/`;
+            const resourceDir = constants.SERVER_MAIN_RES_DIR;
+            const webappDir = constants.CLIENT_MAIN_SRC_DIR;
+
+            const entityName = this.entityConfig.entityClass;
 
             // do your stuff here
         },
@@ -102,13 +99,13 @@ module.exports = JhipsterGenerator.extend({
         },
 
         updateConfig() {
-            jhipsterFunc.updateEntityConfig(this.entityConfig.filename, 'yourOptionKey', this.yourOptionKey);
+            this.updateEntityConfig(this.entityConfig.filename, 'yourOptionKey', this.yourOptionKey);
         }
     },
 
     end() {
         if (this.yourOptionKey){
-            console.log('\n' + chalk.bold.green('<%= moduleName %> enabled'));
+            this.log('\n' + chalk.bold.green('<%= moduleName %> enabled'));
         }
     }
 });
