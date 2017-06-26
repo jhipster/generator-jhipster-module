@@ -12,8 +12,8 @@ util.inherits(JhipsterGenerator, BaseGenerator);
 module.exports = JhipsterGenerator.extend({
     initializing: {
         readConfig() {
-            this.jhipsterConfig = this.getJhipsterAppConfig();
-            if (!this.jhipsterConfig) {
+            this.jhipsterAppConfig = this.getJhipsterAppConfig();
+            if (!this.jhipsterAppConfig) {
                 this.error('Can\'t read .yo-rc.json');
             }
         },
@@ -55,12 +55,12 @@ module.exports = JhipsterGenerator.extend({
     writing: {
         updateFiles() {
             // read config from .yo-rc.json
-            this.baseName = this.jhipsterConfig.baseName;
-            this.packageName = this.jhipsterConfig.packageName;
-            this.packageFolder = this.jhipsterConfig.packageFolder;
-            this.clientFramework = this.jhipsterConfig.clientFramework;
-            this.clientPackageManager = this.jhipsterConfig.clientPackageManager;
-            this.buildTool = this.jhipsterConfig.buildTool;
+            this.baseName = this.jhipsterAppConfig.baseName;
+            this.packageName = this.jhipsterAppConfig.packageName;
+            this.packageFolder = this.jhipsterAppConfig.packageFolder;
+            this.clientFramework = this.jhipsterAppConfig.clientFramework;
+            this.clientPackageManager = this.jhipsterAppConfig.clientPackageManager;
+            this.buildTool = this.jhipsterAppConfig.buildTool;
 
             // use function in generator-base.js from generator-jhipster
             this.angularAppName = this.getAngularAppName();

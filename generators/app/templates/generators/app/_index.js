@@ -12,8 +12,8 @@ util.inherits(JhipsterGenerator, BaseGenerator);
 module.exports = JhipsterGenerator.extend({
     initializing: {
         readConfig() {
-            this.jhipsterConfig = this.getJhipsterAppConfig();
-            if (!this.jhipsterConfig) {
+            this.jhipsterAppConfig = this.getJhipsterAppConfig();
+            if (!this.jhipsterAppConfig) {
                 this.error('Can\'t read .yo-rc.json');
             }
         },
@@ -26,7 +26,7 @@ module.exports = JhipsterGenerator.extend({
             this.log(`Welcome to the ${chalk.bold.yellow('JHipster <%= moduleName %>')} generator! ${chalk.yellow(`v${packagejs.version}\n`)}`);
         },
         checkJhipster() {
-            const jhipsterVersion = this.jhipsterConfig.jhipsterVersion;
+            const jhipsterVersion = this.jhipsterAppConfig.jhipsterVersion;
             const minimumJhipsterVersion = packagejs.dependencies['generator-jhipster'];
             if (!semver.satisfies(jhipsterVersion, minimumJhipsterVersion)) {
                 this.warning(`\nYour generated project used an old JHipster version (${jhipsterVersion})... you need at least (${minimumJhipsterVersion})\n`);
@@ -64,12 +64,12 @@ module.exports = JhipsterGenerator.extend({
         };
 
         // read config from .yo-rc.json
-        this.baseName = this.jhipsterConfig.baseName;
-        this.packageName = this.jhipsterConfig.packageName;
-        this.packageFolder = this.jhipsterConfig.packageFolder;
-        this.clientFramework = this.jhipsterConfig.clientFramework;
-        this.clientPackageManager = this.jhipsterConfig.clientPackageManager;
-        this.buildTool = this.jhipsterConfig.buildTool;
+        this.baseName = this.jhipsterAppConfig.baseName;
+        this.packageName = this.jhipsterAppConfig.packageName;
+        this.packageFolder = this.jhipsterAppConfig.packageFolder;
+        this.clientFramework = this.jhipsterAppConfig.clientFramework;
+        this.clientPackageManager = this.jhipsterAppConfig.clientPackageManager;
+        this.buildTool = this.jhipsterAppConfig.buildTool;
 
         // use function in generator-base.js from generator-jhipster
         this.angularAppName = this.getAngularAppName();
