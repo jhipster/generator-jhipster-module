@@ -4,7 +4,7 @@ const generator = require('yeoman-generator');
 const packagejs = require(__dirname + '/../../package.json');
 const semver = require('semver');
 const BaseGenerator = require('generator-jhipster/generators/generator-base');
-const constants = require('generator-jhipster/generators/generator-constants');
+const jhipsterConstants = require('generator-jhipster/generators/generator-constants');
 
 const JhipsterGenerator = generator.extend({});
 util.inherits(JhipsterGenerator, BaseGenerator);
@@ -66,9 +66,9 @@ module.exports = JhipsterGenerator.extend({
             this.angularAppName = this.getAngularAppName();
 
             // use constants from generator-constants.js
-            const javaDir = `${constants.SERVER_MAIN_SRC_DIR + this.packageFolder}/`;
-            const resourceDir = constants.SERVER_MAIN_RES_DIR;
-            const webappDir = constants.CLIENT_MAIN_SRC_DIR;
+            const javaDir = `${jhipsterConstants.SERVER_MAIN_SRC_DIR + this.packageFolder}/`;
+            const resourceDir = jhipsterConstants.SERVER_MAIN_RES_DIR;
+            const webappDir = jhipsterConstants.CLIENT_MAIN_SRC_DIR;
 
             const entityName = this.entityConfig.entityClass;
 
