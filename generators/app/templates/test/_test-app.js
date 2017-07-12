@@ -5,10 +5,6 @@ const fse = require('fs-extra');
 const assert = require('yeoman-assert');
 const helpers = require('yeoman-test');
 
-const deps = [
-    [helpers.createDummyGenerator(), 'jhipster:modules']
-];
-
 describe('JHipster generator <%= moduleName %>', () => {
     describe('Test with Maven and Angular2', () => {
         beforeEach((done) => {
@@ -23,7 +19,6 @@ describe('JHipster generator <%= moduleName %>', () => {
                 .withPrompts({
                     message: 'simple message to say hello'
                 })
-                .withGenerators(deps)
                 .on('end', done);
         });
 
@@ -48,7 +43,6 @@ describe('JHipster generator <%= moduleName %>', () => {
                 .withPrompts({
                     message: 'simple message to say hello'
                 })
-                .withGenerators(deps)
                 .on('end', done);
         });
 
