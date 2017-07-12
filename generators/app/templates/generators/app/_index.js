@@ -23,7 +23,7 @@ module.exports = JhipsterGenerator.extend({
             this.printJHipsterLogo();
 
             // Have Yeoman greet the user.
-            this.log(`Welcome to the ${chalk.bold.yellow('JHipster <%= moduleName %>')} generator! ${chalk.yellow(`v${packagejs.version}\n`)}`);
+            this.log(`\nWelcome to the ${chalk.bold.yellow('JHipster <%= moduleName %>')} generator! ${chalk.yellow(`v${packagejs.version}\n`)}`);
         },
         checkJhipster() {
             const jhipsterVersion = this.jhipsterAppConfig.jhipsterVersion;
