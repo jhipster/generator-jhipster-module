@@ -116,7 +116,7 @@ module.exports = JhipsterGenerator.extend({
         }
         <%_ if (hook !== 'none') { _%>
         try {
-            jhipsterFunc.registerModule('generator-jhipster-<%= moduleName %>', '<%= hookFor %>', '<%= hookType %>', '<%= hookCallback %>', '<%= moduleDescription %>');
+            this.registerModule('generator-jhipster-<%= moduleName %>', '<%= hookFor %>', '<%= hookType %>', '<%= hookCallback %>', '<%= moduleDescription %>');
         } catch (err) {
             this.log(`${chalk.red.bold('WARN!')} Could not register as a jhipster <%= hookFor %> <%= hookType %> creation hook...\n`);
         }
