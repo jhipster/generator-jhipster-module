@@ -42,7 +42,7 @@ ${chalk.red.bold('                 :::lie.:::')}\n`);
                 name: 'moduleName',
                 validate: input => (/^[a-zA-Z0-9-]+$/.test(input) ? true : 'Your module name is mandatory, cannot contain special characters or a blank space, using the default name instead'),
                 message: 'What is the base name of your module?',
-                default: 'hello-world'
+                default: 'helloworld'
             },
             {
                 type: 'input',
