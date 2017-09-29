@@ -35,7 +35,7 @@
     "fs-extra": "4.0.2",
     "gulp": "3.9.1",
     "gulp-bump": "2.7.0",
-    "gulp-eslint": "3.0.1",
+    "gulp-eslint": "4.0.0",
     "gulp-exclude-gitignore": "1.1.1",
     "gulp-git": "2.1.0",
     "gulp-istanbul": "1.1.1",
