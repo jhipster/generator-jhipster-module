@@ -1,12 +1,14 @@
 const chalk = require('chalk');
-const generator = require('yeoman-generator');
+const Generator = require('yeoman-generator');
 const mkdirp = require('mkdirp');
 const packagejs = require('../../package.json');
 
-module.exports = generator.extend({
-    initializing: {
-        displayLogo() {
-            this.log(`
+module.exports = class extends Generator {
+
+    get initializing() {
+        return {
+            displayLogo() {
+                this.log(`
 ${chalk.red.bold('               Three::Modules')}
 ${chalk.red.bold('           for:::the::Elven-Kings')}
 ${chalk.red.bold('        under:the:sky,:Seven:for:the')}
@@ -28,11 +30,11 @@ ${chalk.red.bold('       all::and::in:the:darkness:bind')}
 ${chalk.red.bold('         them:In:the:Land:of:JHipster')}
 ${chalk.red.bold('            where:::the::Shadows')}
 ${chalk.red.bold('                 :::lie.:::')}\n`);
-
-            this.log(chalk.white.bold('         http://jhipster.github.io\n'));
-            this.log(chalk.white(`Welcome to the ${chalk.bold('JHipster Module')} Generator! ${chalk.yellow(`v${packagejs.version}\n`)}`));
-        }
-    },
+                this.log(chalk.white.bold('         http://jhipster.github.io\n'));
+                this.log(chalk.white(`Welcome to the ${chalk.bold('JHipster Module')} Generator! ${chalk.yellow(`v${packagejs.version}\n`)}`));
+            }
+        };
+    }
 
     prompting() {
         const done = this.async();
@@ -136,7 +138,7 @@ ${chalk.red.bold('                 :::lie.:::')}\n`);
             this.license = props.license;
             done();
         });
-    },
+    }
 
     writing() {
         // function to use directly template
@@ -184,7 +186,7 @@ ${chalk.red.bold('                 :::lie.:::')}\n`);
         mkdirp('generators/entity/templates');
         this.template('generators/entity/_index.js', 'generators/entity/index.js');
         this.template('generators/entity/templates/_dummy.txt', 'generators/entity/templates/dummy.txt');
-    },
+    }
 
     end() {
         this.log(`\n${chalk.bold.green('##### USAGE #####')}`);
@@ -197,4 +199,4 @@ ${chalk.red.bold('                 :::lie.:::')}\n`);
         this.log(`    - launch your module: ${chalk.yellow.bold(`yo jhipster-${this.moduleName}`)}`);
         this.log('- then, come back here, and begin to code!\n');
     }
-});
+};
