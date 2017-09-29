@@ -15,8 +15,7 @@ gulp.task('eslint', () => gulp.src(['gulpfile.js', 'generators/app/index.js', 't
     // .pipe(plumber({errorHandler: handleErrors}))
     .pipe(eslint())
     .pipe(eslint.format())
-    .pipe(eslint.failOnError())
-);
+    .pipe(eslint.failOnError()));
 
 gulp.task('nsp', (cb) => {
     nsp({ package: path.resolve('package.json') }, cb);
@@ -26,8 +25,7 @@ gulp.task('pre-test', () => gulp.src('generators/app/index.js')
     .pipe(istanbul({
         includeUntested: true
     }))
-    .pipe(istanbul.hookRequire())
-);
+    .pipe(istanbul.hookRequire()));
 
 gulp.task('test', ['pre-test'], (cb) => {
     let mochaErr;

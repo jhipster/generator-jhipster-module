@@ -1,4 +1,4 @@
-/* global describe, beforeEach, it*/
+/* global describe, beforeEach, it */
 
 const path = require('path');
 const assert = require('yeoman-assert');
@@ -90,17 +90,17 @@ describe('JHipster generator module', () => {
     describe('default configuration license GNU GPLv3', () => {
         beforeEach((done) => {
             helpers.run(path.join(__dirname, '../generators/app'))
-            .withPrompts({
-                moduleName: 'hello-world',
-                moduleDescription: 'hello world',
-                hook: 'none',
-                githubName: 'githubName',
-                authorName: 'authorName',
-                authorEmail: 'mail@mail',
-                authorUrl: 'authorUrl',
-                license: 'gpl'
-            })
-            .on('end', done);
+                .withPrompts({
+                    moduleName: 'hello-world',
+                    moduleDescription: 'hello world',
+                    hook: 'none',
+                    githubName: 'githubName',
+                    authorName: 'authorName',
+                    authorEmail: 'mail@mail',
+                    authorUrl: 'authorUrl',
+                    license: 'gpl'
+                })
+                .on('end', done);
         });
         it('generates default files', () => {
             assert.file(expectedFiles.module);

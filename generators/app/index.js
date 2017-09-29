@@ -4,7 +4,6 @@ const mkdirp = require('mkdirp');
 const packagejs = require('../../package.json');
 
 module.exports = class extends Generator {
-
     get initializing() {
         return {
             displayLogo() {
