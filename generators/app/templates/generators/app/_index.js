@@ -1,38 +1,37 @@
 const util = require('util');
 const chalk = require('chalk');
-const generator = require('yeoman-generator');
+
 const packagejs = require('../../package.json');
 const semver = require('semver');
 const BaseGenerator = require('generator-jhipster/generators/generator-base');
 const jhipsterConstants = require('generator-jhipster/generators/generator-constants');
 
-const JhipsterGenerator = generator.extend({});
-util.inherits(JhipsterGenerator, BaseGenerator);
+module.exports = class extends BaseGenerator {
+    get initializing() {
+        return {
+            readConfig() {
+                this.jhipsterAppConfig = this.getJhipsterAppConfig();
+                if (!this.jhipsterAppConfig) {
+                    this.error('Can\'t read .yo-rc.json');
+                }
+            },
+            displayLogo() {
+                // it's here to show that you can use functions from generator-jhipster
+                // this function is in: generator-jhipster/generators/generator-base.js
+                this.printJHipsterLogo();
 
-module.exports = JhipsterGenerator.extend({
-    initializing: {
-        readConfig() {
-            this.jhipsterAppConfig = this.getJhipsterAppConfig();
-            if (!this.jhipsterAppConfig) {
-                this.error('Can\'t read .yo-rc.json');
+                // Have Yeoman greet the user.
+                this.log(`\nWelcome to the ${chalk.bold.yellow('JHipster <%= moduleName %>')} generator! ${chalk.yellow(`v${packagejs.version}\n`)}`);
+            },
+            checkJhipster() {
+                const jhipsterVersion = this.jhipsterAppConfig.jhipsterVersion;
+                const minimumJhipsterVersion = packagejs.dependencies['generator-jhipster'];
+                if (!semver.satisfies(jhipsterVersion, minimumJhipsterVersion)) {
+                    this.warning(`\nYour generated project used an old JHipster version (${jhipsterVersion})... you need at least (${minimumJhipsterVersion})\n`);
+                }
             }
-        },
-        displayLogo() {
-            // it's here to show that you can use functions from generator-jhipster
-            // this function is in: generator-jhipster/generators/generator-base.js
-            this.printJHipsterLogo();
-
-            // Have Yeoman greet the user.
-            this.log(`\nWelcome to the ${chalk.bold.yellow('JHipster <%= moduleName %>')} generator! ${chalk.yellow(`v${packagejs.version}\n`)}`);
-        },
-        checkJhipster() {
-            const jhipsterVersion = this.jhipsterAppConfig.jhipsterVersion;
-            const minimumJhipsterVersion = packagejs.dependencies['generator-jhipster'];
-            if (!semver.satisfies(jhipsterVersion, minimumJhipsterVersion)) {
-                this.warning(`\nYour generated project used an old JHipster version (${jhipsterVersion})... you need at least (${minimumJhipsterVersion})\n`);
-            }
-        }
-    },
+        };
+    }
 
     prompting() {
         const prompts = [
@@ -51,7 +50,7 @@ module.exports = JhipsterGenerator.extend({
 
             done();
         });
-    },
+    }
 
     writing() {
         // function to use directly template
@@ -121,7 +120,7 @@ module.exports = JhipsterGenerator.extend({
             this.log(`${chalk.red.bold('WARN!')} Could not register as a jhipster <%= hookFor %> <%= hookType %> creation hook...\n`);
         }
         <%_ } _%>
-    },
+    }
 
     install() {
         let logMsg =
@@ -150,9 +149,9 @@ module.exports = JhipsterGenerator.extend({
         } else {
             this.installDependencies(installConfig);
         }
-    },
+    }
 
     end() {
         this.log('End of <%= moduleName %> generator');
     }
-});
+};
