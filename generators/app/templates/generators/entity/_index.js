@@ -1,12 +1,9 @@
-const util = require('util');
 const chalk = require('chalk');
-const packagejs = require(__dirname + '/../../package.json');
-const semver = require('semver');
+const packagejs = require('../../package.json');
 const BaseGenerator = require('generator-jhipster/generators/generator-base');
 const jhipsterConstants = require('generator-jhipster/generators/generator-constants');
 
 module.exports = class extends BaseGenerator {
-        
     get initializing() {
         return {
             readConfig() {
@@ -17,20 +14,20 @@ module.exports = class extends BaseGenerator {
                 }
             },
             displayLogo() {
-                this.log(chalk.white('Running ' + chalk.bold('JHipster <%= moduleName %>') + ' Generator! ' + chalk.yellow('v' + packagejs.version + '\n')));
+                this.log(chalk.white(`Running ${chalk.bold('JHipster rain')} Generator! ${chalk.yellow(`v${packagejs.version}\n`)}`));
             },
             validate() {
                 // this shouldn't be run directly
                 if (!this.entityConfig) {
-                    this.env.error(chalk.red.bold('ERROR!') + ' This sub generator should be used only from JHipster and cannot be run directly...\n');
+                    this.env.error(`${chalk.red.bold('ERROR!')} This sub generator should be used only from JHipster and cannot be run directly...\n`);
                 }
             }
         };
-    } 
+    }
 
     prompting() {
         // don't prompt if data are imported from a file
-        if (this.entityConfig.useConfigurationFile == true && this.entityConfig.data && typeof this.entityConfig.data.yourOptionKey !== 'undefined') {
+        if (this.entityConfig.useConfigurationFile === true && this.entityConfig.data && typeof this.entityConfig.data.yourOptionKey !== 'undefined') {
             this.yourOptionKey = this.entityConfig.data.yourOptionKey;
             return;
         }
@@ -62,20 +59,31 @@ module.exports = class extends BaseGenerator {
                 this.clientFramework = this.jhipsterAppConfig.clientFramework;
                 this.clientPackageManager = this.jhipsterAppConfig.clientPackageManager;
                 this.buildTool = this.jhipsterAppConfig.buildTool;
-    
+
                 // use function in generator-base.js from generator-jhipster
                 this.angularAppName = this.getAngularAppName();
-    
+
                 // use constants from generator-constants.js
                 const javaDir = `${jhipsterConstants.SERVER_MAIN_SRC_DIR + this.packageFolder}/`;
                 const resourceDir = jhipsterConstants.SERVER_MAIN_RES_DIR;
                 const webappDir = jhipsterConstants.CLIENT_MAIN_SRC_DIR;
-    
+
                 const entityName = this.entityConfig.entityClass;
-    
+
+                // show all variables
+                this.log('\n--- some const ---');
+                this.log(`javaDir=${javaDir}`);
+                this.log(`resourceDir=${resourceDir}`);
+                this.log(`webappDir=${webappDir}`);
+
+                this.log('\n--- entityName ---');
+                this.log(`\nentityName=${entityName}`);
+
+                this.log('------\n');
+
                 // do your stuff here
             },
-    
+
             writeFiles() {
                 // function to use directly template
                 this.template = function (source, destination) {
@@ -85,10 +93,10 @@ module.exports = class extends BaseGenerator {
                         this
                     );
                 };
-    
+
                 this.template('dummy.txt', 'dummy.txt', this, {});
             },
-    
+
             updateConfig() {
                 this.updateEntityConfig(this.entityConfig.filename, 'yourOptionKey', this.yourOptionKey);
             }
@@ -96,8 +104,8 @@ module.exports = class extends BaseGenerator {
     }
 
     end() {
-        if (this.yourOptionKey){
-            this.log('\n' + chalk.bold.green('<%= moduleName %> enabled'));
+        if (this.yourOptionKey) {
+            this.log(`\n${chalk.bold.green('rain enabled')}`);
         }
     }
-}
+};

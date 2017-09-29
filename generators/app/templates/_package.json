@@ -50,6 +50,9 @@
     "yeoman-test": "1.7.0"
   },
   "scripts": {
+    "pretest": "eslint .",
+    "lint": "eslint .",
+    "lint-fix": "eslint . --fix",
     "test": "mocha test/*"
   },
   <%_ if (license === 'apache') { _%>
