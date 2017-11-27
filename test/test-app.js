@@ -12,7 +12,6 @@ const expectedFiles = {
         '.gitattributes',
         '.gitignore',
         '.travis.yml',
-        'gulpfile.js',
         'package.json',
         'README.md',
         'test/templates/maven-angular2/.yo-rc.json',
