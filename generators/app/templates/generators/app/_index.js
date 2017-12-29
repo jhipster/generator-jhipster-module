@@ -7,6 +7,11 @@ const jhipsterConstants = require('generator-jhipster/generators/generator-const
 module.exports = class extends BaseGenerator {
     get initializing() {
         return {
+            init(args) {
+                if (args === 'default') {
+                    // do something when argument is 'default'
+                }
+            },
             readConfig() {
                 this.jhipsterAppConfig = this.getJhipsterAppConfig();
                 if (!this.jhipsterAppConfig) {
@@ -102,8 +107,8 @@ module.exports = class extends BaseGenerator {
         if (this.clientFramework === 'angular1') {
             this.template('dummy.txt', 'dummy-angular1.txt');
         }
-        if (this.clientFramework === 'angular2') {
-            this.template('dummy.txt', 'dummy-angular2.txt');
+        if (this.clientFramework === 'angularX' || this.clientFramework === 'angular2') {
+            this.template('dummy.txt', 'dummy-angularX.txt');
         }
         if (this.buildTool === 'maven') {
             this.template('dummy.txt', 'dummy-maven.txt');

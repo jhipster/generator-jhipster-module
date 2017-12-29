@@ -169,7 +169,7 @@ ${chalk.red.bold('                 :::lie.:::')}\n`);
         // copy files for test
         mkdirp('test/templates/default');
         this.template('test/templates/gradle-angular1/_yo-rc.json', 'test/templates/gradle-angular1/.yo-rc.json');
-        this.template('test/templates/maven-angular2/_yo-rc.json', 'test/templates/maven-angular2/.yo-rc.json');
+        this.template('test/templates/maven-angularX/_yo-rc.json', 'test/templates/maven-angularX/.yo-rc.json');
         this.template('test/_test-app.js', 'test/test-app.js');
 
         // copy files for the generator
@@ -189,11 +189,11 @@ ${chalk.red.bold('                 :::lie.:::')}\n`);
     end() {
         this.log(`\n${chalk.bold.green('##### USAGE #####')}`);
         this.log('To begin to work:');
-        this.log(`- launch: ${chalk.yellow.bold('yarn install')}`);
-        this.log(`- link: ${chalk.yellow.bold('yarn link')}`);
+        this.log(`- launch: ${chalk.yellow.bold('yarn install')} or ${chalk.yellow.bold('npm install')}`);
+        this.log(`- link: ${chalk.yellow.bold('yarn link')} or ${chalk.yellow.bold('npm link')}`);
         this.log('- test your module in a JHipster project: ');
         this.log('    - go into your JHipster project');
-        this.log(`    - link to your module: ${chalk.yellow.bold(`yarn link generator-jhipster-${this.moduleName}`)}`);
+        this.log(`    - link to your module: ${chalk.yellow.bold(`yarn link generator-jhipster-${this.moduleName}`)} or ${chalk.yellow.bold(`npm link generator-jhipster-${this.moduleName}`)}`);
         this.log(`    - launch your module: ${chalk.yellow.bold(`yo jhipster-${this.moduleName}`)}`);
         this.log('- then, come back here, and begin to code!\n');
     }

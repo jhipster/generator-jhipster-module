@@ -6,12 +6,12 @@ const assert = require('yeoman-assert');
 const helpers = require('yeoman-test');
 
 describe('JHipster generator <%= moduleName %>', () => {
-    describe('Test with Maven and Angular2', () => {
+    describe('Test with Maven and AngularX', () => {
         beforeEach((done) => {
             helpers
                 .run(path.join(__dirname, '../generators/app'))
                 .inTmpDir((dir) => {
-                    fse.copySync(path.join(__dirname, '../test/templates/maven-angular2'), dir);
+                    fse.copySync(path.join(__dirname, '../test/templates/maven-angularX'), dir);
                 })
                 .withOptions({
                     testmode: true
@@ -25,7 +25,7 @@ describe('JHipster generator <%= moduleName %>', () => {
         it('generate dummy.txt file', () => {
             assert.file([
                 'dummy-maven.txt',
-                'dummy-angular2.txt',
+                'dummy-angularX.txt',
             ]);
         });
     });
