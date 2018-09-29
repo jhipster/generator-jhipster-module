@@ -2,14 +2,11 @@ os:
     - linux
 language: node_js
 node_js:
-    - "8.9.1"
+    - "8.12.0"
 before_install:
     - npm install -g npm
-    # Repo for Yarn
-    - curl -o- -L https://yarnpkg.com/install.sh | bash
-    - export PATH=$HOME/.yarn/bin:$PATH
 install:
-    - yarn install
-    - yarn link
+    - npm install
+    - npm link
 script:
-    - yarn test
+    - npm test

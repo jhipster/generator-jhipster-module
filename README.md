@@ -18,20 +18,6 @@ Reading this [JHipster module](https://jhipster.github.io/modules/creating_a_mod
 
 # Installation
 
-## With Yarn
-
-To install this module:
-
-```bash
-yarn global add generator-jhipster-module
-```
-
-To update this module:
-
-```bash
-yarn global upgrade generator-jhipster-module
-```
-
 ## With NPM
 
 To install this module:
@@ -44,6 +30,20 @@ To update this module:
 
 ```bash
 npm update -g generator-jhipster-module
+```
+
+## With Yarn
+
+To install this module:
+
+```bash
+yarn global add generator-jhipster-module
+```
+
+To update this module:
+
+```bash
+yarn global upgrade generator-jhipster-module
 ```
 
 # Usage
