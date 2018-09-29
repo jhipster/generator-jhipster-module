@@ -1,8 +1,7 @@
 /* global describe, beforeEach, it */
 
-const { validateGitHubName } = require('../generators/app/input-validation');
-
 const assert = require('yeoman-assert');
+const { validateGitHubName } = require('../generators/app/input-validation');
 
 describe('input validation', () => {
     describe('validateGitHubName', () => {
@@ -67,4 +66,3 @@ describe('input validation', () => {
         });
     });
 });
-

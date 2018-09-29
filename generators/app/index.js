@@ -187,11 +187,11 @@ ${chalk.red.bold('                 :::lie.:::')}\n`);
     end() {
         this.log(`\n${chalk.bold.green('##### USAGE #####')}`);
         this.log('To begin to work:');
-        this.log(`- launch: ${chalk.yellow.bold('yarn install')} or ${chalk.yellow.bold('npm install')}`);
-        this.log(`- link: ${chalk.yellow.bold('yarn link')} or ${chalk.yellow.bold('npm link')}`);
+        this.log(`- launch: ${chalk.yellow.bold('npm install')} or ${chalk.yellow.bold('yarn install')}`);
+        this.log(`- link: ${chalk.yellow.bold('npm link')} or ${chalk.yellow.bold('yarn link')}`);
         this.log('- test your module in a JHipster project: ');
         this.log('    - go into your JHipster project');
-        this.log(`    - link to your module: ${chalk.yellow.bold(`yarn link generator-jhipster-${this.moduleName}`)} or ${chalk.yellow.bold(`npm link generator-jhipster-${this.moduleName}`)}`);
+        this.log(`    - link to your module: ${chalk.yellow.bold(`npm link generator-jhipster-${this.moduleName}`)} or ${chalk.yellow.bold(`yarn link generator-jhipster-${this.moduleName}`)}`);
         this.log(`    - launch your module: ${chalk.yellow.bold(`yo jhipster-${this.moduleName}`)}`);
         this.log('- then, come back here, and begin to code!\n');
     }
