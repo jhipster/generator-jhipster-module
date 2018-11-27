@@ -4,29 +4,15 @@
 
 # Introduction
 
-This is a [JHipster](http://jhipster.github.io/) module, that is meant to be used in a JHipster application.
+This is a [JHipster](https://www.jhipster.tech/) module, that is meant to be used in a JHipster application.
 
 # Prerequisites
 
-As this is a [JHipster](http://jhipster.github.io/) module, we expect you have JHipster and its related tools already installed:
+As this is a [JHipster](https://www.jhipster.tech/) module, we expect you have JHipster and its related tools already installed:
 
-- [Installing JHipster](https://jhipster.github.io/installation.html)
+- [Installing JHipster](https://www.jhipster.tech/installation/)
 
 # Installation
-
-## With Yarn
-
-To install this module:
-
-```bash
-yarn global add generator-jhipster-<%= moduleName %>
-```
-
-To update this module:
-
-```bash
-yarn global upgrade generator-jhipster-<%= moduleName %>
-```
 
 ## With NPM
 
@@ -40,6 +26,20 @@ To update this module:
 
 ```bash
 npm update -g generator-jhipster-<%= moduleName %>
+```
+
+## With Yarn
+
+To install this module:
+
+```bash
+yarn global add generator-jhipster-<%= moduleName %>
+```
+
+To update this module:
+
+```bash
+yarn global upgrade generator-jhipster-<%= moduleName %>
 ```
 
 # Usage
