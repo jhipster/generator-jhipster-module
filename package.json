@@ -43,7 +43,7 @@
     "release:patch": "npm version patch -a -m \"Update to %s\" && npm run release",
     "release:minor": "npm version minor -a -m \"Update to %s\" && npm run release",
     "release:major": "npm version major -a -m \"Update to %s\" && npm run release",
-    "test": "mocha test/* --slow 0 --reporter spec"
+    "test": "mocha test/*.js --slow 0 --reporter spec"
   },
   "license": "Apache-2.0"
 }

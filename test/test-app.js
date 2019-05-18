@@ -3,6 +3,7 @@
 const path = require('path');
 const assert = require('yeoman-assert');
 const helpers = require('yeoman-test');
+const fs = require('fs');
 
 const expectedFiles = {
     module: [
@@ -48,6 +49,11 @@ describe('JHipster generator module', () => {
         });
         it('generates default files', () => {
             assert.file(expectedFiles.module);
+        });
+        it('generates index.js with correct content', () => {
+            const actualContent = fs.readFileSync('generators/app/index.js', 'utf8');
+            const expectedContent = fs.readFileSync(`${__dirname}/results/index.js.txt`, 'utf8');
+            assert.textEqual(actualContent, expectedContent);
         });
         it('doesn\'t generate license', () => {
             assert.noFile(expectedFiles.license);

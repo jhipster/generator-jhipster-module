@@ -24,7 +24,7 @@ module.exports = class extends BaseGenerator {
                 this.printJHipsterLogo();
 
                 // Have Yeoman greet the user.
-                this.log(`\nWelcome to the ${chalk.bold.yellow('JHipster <%= moduleName %>')} generator! ${chalk.yellow(`v${packagejs.version}\n`)}`);
+                this.log(`\nWelcome to the ${chalk.bold.yellow('JHipster hello-world')} generator! ${chalk.yellow(`v${packagejs.version}\n`)}`);
             },
             checkJhipster() {
                 const currentJhipsterVersion = this.jhipsterAppConfig.jhipsterVersion;
@@ -116,13 +116,6 @@ module.exports = class extends BaseGenerator {
         if (this.buildTool === 'gradle') {
             this.template('dummy.txt', 'dummy-gradle.txt');
         }
-        <%_ if (hook !== 'none') { _%>
-        try {
-            this.registerModule('generator-jhipster-<%= moduleName %>', '<%= hookFor %>', '<%= hookType %>', '<%= hookCallback %>', '<%= moduleDescription %>');
-        } catch (err) {
-            this.log(`${chalk.red.bold('WARN!')} Could not register as a jhipster <%= hookFor %> <%= hookType %> creation hook...\n`);
-        }
-        <%_ } _%>
     }
 
     install() {
@@ -155,6 +148,6 @@ module.exports = class extends BaseGenerator {
     }
 
     end() {
-        this.log('End of <%= moduleName %> generator');
+        this.log('End of hello-world generator');
     }
 };
