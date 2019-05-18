@@ -1,17 +1,17 @@
 {
-  "name": "generator-jhipster-<%= moduleName %>",
+  "name": "generator-jhipster-hello-world",
   "version": "0.0.0",
-  "description": "<%= moduleDescription %>",
+  "description": "hello world",
   "keywords": [
     "yeoman-generator",
     "jhipster-module",
     "jhipster-5"
   ],
-  "homepage": "https://github.com/<%= githubName %>/generator-jhipster-<%= moduleName %>",
+  "homepage": "https://github.com/githubName/generator-jhipster-hello-world",
   "author": {
-    "name": "<%= authorName %>",
-    "email": "<%= authorEmail %>",
-    "url": "<%= authorUrl %>"
+    "name": "authorName",
+    "email": "mail@mail",
+    "url": "authorUrl"
   },
   "files": [
     "generators"
@@ -19,7 +19,7 @@
   "main": "generators/app/index.js",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/<%= githubName %>/generator-jhipster-<%= moduleName %>.git"
+    "url": "git+https://github.com/githubName/generator-jhipster-hello-world.git"
   },
   "dependencies": {
     "chalk": "2.4.1",
@@ -48,14 +48,7 @@
     "release:major": "npm version major -a -m \"Update to %s\" && npm run release",
     "test": "mocha test"
   },
-  <%_ if (license === 'apache') { _%>
-  "license": "Apache-2.0",
-  <%_ } else if (license === 'gpl') { _%>
-  "license": "GPL-3.0",
-  <%_ } else if (license === 'mit') { _%>
-  "license": "MIT",
-  <%_ } _%>
   "bugs": {
-    "url": "https://github.com/<%= githubName %>/generator-jhipster-<%= moduleName %>/issues"
+    "url": "https://github.com/githubName/generator-jhipster-hello-world/issues"
   }
 }

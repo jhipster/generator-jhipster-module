@@ -55,6 +55,11 @@ describe('JHipster generator module', () => {
             const expectedContent = fs.readFileSync(`${__dirname}/results/index.js.txt`, 'utf8');
             assert.textEqual(actualContent, expectedContent);
         });
+        it('generates package.json with correct content', () => {
+            const actualContent = fs.readFileSync('package.json', 'utf8');
+            const expectedContent = fs.readFileSync(`${__dirname}/results/package.json.txt`, 'utf8');
+            assert.textEqual(actualContent, expectedContent);
+        });
         it('doesn\'t generate license', () => {
             assert.noFile(expectedFiles.license);
         });
