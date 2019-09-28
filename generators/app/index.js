@@ -168,7 +168,7 @@ ${chalk.red.bold('                 :::lie.:::')}\n`);
         mkdirp('test/templates/default');
         this.template('test/templates/gradle-react/_yo-rc.json', 'test/templates/gradle-react/.yo-rc.json');
         this.template('test/templates/maven-angularX/_yo-rc.json', 'test/templates/maven-angularX/.yo-rc.json');
-        this.template('test/_test-app.js', 'test/test-app.js');
+        this.template('test/_app.spec.js', 'test/test-app.js');
 
         // copy files for the generator
         mkdirp('generators/app/templates');
