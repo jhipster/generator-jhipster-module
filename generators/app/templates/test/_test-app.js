@@ -30,12 +30,12 @@ describe('JHipster generator <%= moduleName %>', () => {
         });
     });
 
-    describe('Test with Gradle and Angular1', () => {
+    describe('Test with Gradle and React', () => {
         beforeEach((done) => {
             helpers
                 .run(path.join(__dirname, '../generators/app'))
                 .inTmpDir((dir) => {
-                    fse.copySync(path.join(__dirname, '../test/templates/gradle-angular1'), dir);
+                    fse.copySync(path.join(__dirname, '../test/templates/gradle-react'), dir);
                 })
                 .withOptions({
                     testmode: true
@@ -49,7 +49,7 @@ describe('JHipster generator <%= moduleName %>', () => {
         it('generate dummy.txt file', () => {
             assert.file([
                 'dummy-gradle.txt',
-                'dummy-angular1.txt',
+                'dummy-react.txt',
             ]);
         });
     });
