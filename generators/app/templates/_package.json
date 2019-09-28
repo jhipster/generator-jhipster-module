@@ -5,7 +5,7 @@
   "keywords": [
     "yeoman-generator",
     "jhipster-module",
-    "jhipster-5"
+    "jhipster-6"
   ],
   "homepage": "https://github.com/<%= githubName %>/generator-jhipster-<%= moduleName %>",
   "author": {
