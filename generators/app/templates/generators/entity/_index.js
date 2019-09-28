@@ -1,14 +1,14 @@
 const chalk = require('chalk');
-const packagejs = require('../../package.json');
 const BaseGenerator = require('generator-jhipster/generators/generator-base');
 const jhipsterConstants = require('generator-jhipster/generators/generator-constants');
+const packagejs = require('../../package.json');
 
 module.exports = class extends BaseGenerator {
     get initializing() {
         return {
             readConfig() {
                 this.entityConfig = this.options.entityConfig;
-                this.jhipsterAppConfig = this.getJhipsterAppConfig();
+                this.jhipsterAppConfig = this.getAllJhipsterConfig();
                 if (!this.jhipsterAppConfig) {
                     this.error('Can\'t read .yo-rc.json');
                 }
