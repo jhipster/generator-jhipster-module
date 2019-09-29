@@ -10,7 +10,7 @@ module.exports = class extends Generator {
     constructor(args, options) {
         super(args, options);
         // Register file transforms for generated files, using Prettier
-        const prettierFilter = filter(['{,**/}*.{js,json,md,yml}'], { restore: true });
+        const prettierFilter = filter(['{,**/}{.,}*.{js,json,md,yml}'], { restore: true });
         // this pipe will pass through (restore) anything that doesn't match prettierFilter
         this.registerTransformStream([prettierFilter, prettierTransform(), prettierFilter.restore]);
     }
