@@ -1,5 +1,3 @@
-/* global describe, beforeEach, it */
-
 const assert = require('yeoman-assert');
 const { validateGitHubName } = require('../generators/app/input-validation');
 
