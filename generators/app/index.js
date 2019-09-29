@@ -1,10 +1,20 @@
 const chalk = require('chalk');
 const Generator = require('yeoman-generator');
+const filter = require('gulp-filter');
 const mkdirp = require('mkdirp');
 const packagejs = require('../../package.json');
 const { validateGitHubName, validateModuleName } = require('./input-validation');
+const prettierTransform = require('./generator-transforms').prettierTransform;
 
 module.exports = class extends Generator {
+    constructor(args, options) {
+        super(args, options);
+        // Register file transforms for generated files, using Prettier
+        const prettierFilter = filter(['{,**/}*.{js,json,md,yml}'], { restore: true });
+        // this pipe will pass through (restore) anything that doesn't match prettierFilter
+        this.registerTransformStream([prettierFilter, prettierTransform(), prettierFilter.restore]);
+    }
+
     get initializing() {
         return {
             displayLogo() {
@@ -148,6 +158,8 @@ ${chalk.red.bold('                 :::lie.:::')}\n`);
         };
 
         // copy general files
+        this.template('.prettierrc.ejs', '.prettierrc');
+        this.template('.prettierignore.ejs', '.prettierignore');
         this.template('editorconfig', '.editorconfig');
         this.template('eslintignore', '.eslintignore');
         this.template('eslintrc.json', '.eslintrc.json');
