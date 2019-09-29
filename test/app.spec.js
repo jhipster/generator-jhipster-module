@@ -14,7 +14,7 @@ const expectedFiles = {
         'README.md',
         'test/templates/maven-angularX/.yo-rc.json',
         'test/templates/gradle-react/.yo-rc.json',
-        'test/test-app.js',
+        'test/app.spec.js',
         'generators/app/index.js',
         'generators/app/templates/dummy.txt'
     ],
