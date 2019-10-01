@@ -1,6 +1,6 @@
 # generator-jhipster-module
 [![NPM version][npm-image]][npm-url] [![Azure DevOps Build Status][azure-devops-image]][azure-devops-url-main] [![Build Status][travis-image]][travis-url] [![Dependency Status][daviddm-image]][daviddm-url]
-> JHipster module, used to create a JHipster module - "*One JHipster module to rule them all*"
+> Yeoman generator to create a JHipster module - "*One JHipster module to rule them all*"
 
 <div align="center">
     <a href="https://www.jhipster.tech">
@@ -10,7 +10,7 @@
 
 # Introduction
 
-This is **not really** a [JHipster](https://www.jhipster.tech) module, that is meant to **not** be used in a JHipster application. This module is used to generate a new template for coding a new JHipster module. A JHipster module to create a JHipster module.
+This [Yeoman](https://yeoman.io/) generator will help you to kickstart a new [JHipster](https://www.jhipster.tech) module, if you want to develop a generator that will add new features to an existing JHipster application.
 
 # Prerequisites
 
