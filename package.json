@@ -23,7 +23,10 @@
   },
   "dependencies": {
     "chalk": "2.4.1",
+    "gulp-filter": "6.0.0",
     "mkdirp": "0.5.1",
+    "prettier": "1.18.2",
+    "through2": "3.0.1",
     "yeoman-generator": "3.1.1"
   },
   "devDependencies": {

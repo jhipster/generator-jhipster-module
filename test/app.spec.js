@@ -4,6 +4,8 @@ const helpers = require('yeoman-test');
 
 const expectedFiles = {
     module: [
+        '.prettierrc',
+        '.prettierignore',
         '.editorconfig',
         '.eslintignore',
         '.eslintrc.json',
