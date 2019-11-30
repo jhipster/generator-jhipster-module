@@ -23,7 +23,7 @@ pool:
 steps:
 - task: NodeTool@0
   inputs:
-    versionSpec: '12.13.0'
+    versionSpec: '12.13.1'
   displayName: 'TOOLS: install Node.js'
 
 - bash: npm install -g npm
