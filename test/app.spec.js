@@ -4,6 +4,7 @@ const helpers = require('yeoman-test');
 
 const expectedFiles = {
     module: [
+        '.github/workflows/github-ci.yml',
         '.prettierrc',
         '.prettierignore',
         '.editorconfig',
