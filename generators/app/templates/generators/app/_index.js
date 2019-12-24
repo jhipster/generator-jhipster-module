@@ -15,7 +15,7 @@ module.exports = class extends BaseGenerator {
             readConfig() {
                 this.jhipsterAppConfig = this.getAllJhipsterConfig();
                 if (!this.jhipsterAppConfig) {
-                    this.error('Can\'t read .yo-rc.json');
+                    this.error('Cannot read .yo-rc.json');
                 }
             },
             displayLogo() {
@@ -126,7 +126,7 @@ module.exports = class extends BaseGenerator {
     }
 
     install() {
-        let logMsg = `To install your dependencies manually, run: ${chalk.yellow.bold(`${this.clientPackageManager} install`)}`;
+        const logMsg = `To install your dependencies manually, run: ${chalk.yellow.bold(`${this.clientPackageManager} install`)}`;
 
         const injectDependenciesAndConstants = (err) => {
             if (err) {
