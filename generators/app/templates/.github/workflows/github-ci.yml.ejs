@@ -1,0 +1,48 @@
+name: Build
+on: [push, pull_request]
+jobs:
+    unit-tests:
+        name: generator-jhipster-<%= moduleName %> unit tests
+        runs-on: ubuntu-latest
+        timeout-minutes: 40
+        steps:
+            - uses: actions/checkout@v1
+            - uses: actions/setup-node@v1
+              with:
+                  node-version: 12.13.1
+            - name: Install node.js packages
+              run: npm install
+            - name: Link module
+              run: npm link
+            - name: Run generator tests
+              run: npm test
+    integration-tests:
+        name: generator-jhipster-<%= moduleName %> integration tests
+        runs-on: ubuntu-latest
+        strategy:
+            matrix:
+                sample: [maven, gradle]
+        timeout-minutes: 40
+        steps:
+            - uses: actions/checkout@v1
+            - uses: actions/setup-node@v1
+              with:
+                  node-version: 12.13.1
+            - name: Install node.js packages
+              run: npm install
+            - name: Link module
+              run: npm link
+            - name: Install tools
+              run: npm install -g yo
+            - name: Install JHipster
+              run: npm install -g generator-jhipster
+            - name: Generate project
+              run: |
+                jhipster --with-entities --no-insight
+                yo jhipster-<%= moduleName %> --force
+              working-directory: ./test/templates/${{ matrix.sample }}
+            - name: Run integration-tests
+              run: | 
+                '[ -f ./mvnw ] && ./mvnw -ntp verify'
+                '[ -f ./gradlew ] && ./gradlew test integrationTest'
+              working-directory: ./test/templates/${{ matrix.sample }}

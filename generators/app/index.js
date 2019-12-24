@@ -158,6 +158,7 @@ ${chalk.red.bold('                 :::lie.:::')}\n`);
         };
 
         // copy general files
+        this.template('.github/workflows/github-ci.yml.ejs', '.github/workflows/github-ci.yml');
         this.template('.prettierrc.ejs', '.prettierrc');
         this.template('.prettierignore.ejs', '.prettierignore');
         this.template('editorconfig', '.editorconfig');
