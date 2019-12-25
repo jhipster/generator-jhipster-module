@@ -10,7 +10,7 @@ module.exports = class extends BaseGenerator {
                 this.entityConfig = this.options.entityConfig;
                 this.jhipsterAppConfig = this.getAllJhipsterConfig();
                 if (!this.jhipsterAppConfig) {
-                    this.error('Can\'t read .yo-rc.json');
+                    this.error('Cannot read .yo-rc.json');
                 }
             },
             displayLogo() {
