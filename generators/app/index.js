@@ -5,6 +5,7 @@ const mkdirp = require('mkdirp');
 const packagejs = require('../../package.json');
 const { validateGitHubName, validateModuleName } = require('./input-validation');
 const prettierTransform = require('./generator-transforms').prettierTransform;
+const constants = require('../generator-constants');
 
 module.exports = class extends Generator {
     constructor(args, options) {
@@ -42,7 +43,10 @@ ${chalk.red.bold('            where:::the::Shadows')}
 ${chalk.red.bold('                 :::lie.:::')}\n`);
                 this.log(chalk.white.bold('         http://www.jhipster.tech\n'));
                 this.log(chalk.white(`Welcome to the ${chalk.bold('JHipster Module')} Generator! ${chalk.yellow(`v${packagejs.version}\n`)}`));
-            }
+            },
+            initConstants() {
+                this.NODE_VERSION = constants.NODE_VERSION;
+            },
         };
     }
 
