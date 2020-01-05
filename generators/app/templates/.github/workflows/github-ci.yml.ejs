@@ -2,7 +2,7 @@ name: Build
 on: [push, pull_request]
 jobs:
     unit-tests:
-        name: generator-jhipster-<%= moduleName %> unit tests
+        name: unit tests
         runs-on: ubuntu-latest
         timeout-minutes: 40
         steps:
@@ -17,7 +17,7 @@ jobs:
             - name: Run generator tests
               run: npm test
     integration-tests:
-        name: generator-jhipster-<%= moduleName %> integration tests
+        name: integration tests
         runs-on: ubuntu-latest
         strategy:
             matrix:
