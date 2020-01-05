@@ -39,10 +39,31 @@ jobs:
             - name: Generate project
               run: |
                 jhipster --with-entities --no-insight
-                yo jhipster-<%= moduleName %> --force
+                yo jhipster-<%= moduleName %> default --force
               working-directory: ./test/templates/${{ matrix.sample }}
             - name: Run integration-tests
               run: |
-                '[ -f ./mvnw ] && ./mvnw -ntp verify'
-                '[ -f ./gradlew ] && ./gradlew test integrationTest'
+                  if [ -f "mvnw" ]; then
+                      ./mvnw -ntp -P-webpack verify --batch-mode \
+                          -Dlogging.level.ROOT=OFF \
+                          -Dlogging.level.org.zalando=OFF \
+                          -Dlogging.level.io.github.jhipster=OFF \
+                          -Dlogging.level.com.mycompany.myapp=OFF \
+                          -Dlogging.level.org.springframework=OFF \
+                          -Dlogging.level.org.springframework.web=OFF \
+                          -Dlogging.level.org.springframework.security=OFF
+                  elif [ -f "gradlew" ]; then
+                      JHI_GRADLE_EXCLUDE_WEBPACK="-x webpack"
+                      if [[ $(grep "\"skipClient\": true" .yo-rc.json) != "" ]]; then
+                          JHI_GRADLE_EXCLUDE_WEBPACK=""
+                      fi
+                      ./gradlew test integrationTest $JHI_GRADLE_EXCLUDE_WEBPACK \
+                          -Dlogging.level.ROOT=OFF \
+                          -Dlogging.level.org.zalando=OFF \
+                          -Dlogging.level.io.github.jhipster=OFF \
+                          -Dlogging.level.com.mycompany.myapp=OFF \
+                          -Dlogging.level.org.springframework=OFF \
+                          -Dlogging.level.org.springframework.web=OFF \
+                          -Dlogging.level.org.springframework.security=OFF
+                  fi
               working-directory: ./test/templates/${{ matrix.sample }}
