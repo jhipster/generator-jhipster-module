@@ -1,0 +1,16 @@
+name: Build
+on: [push, pull_request]
+jobs:
+    unit-tests:
+        name: unit tests
+        runs-on: ubuntu-latest
+        timeout-minutes: 10
+        steps:
+            - uses: actions/checkout@v1
+            - uses: actions/setup-node@v1
+              with:
+                  node-version: 12.14.0
+            - name: Install node.js packages
+              run: npm install
+            - name: Run generator tests
+              run: npm test
