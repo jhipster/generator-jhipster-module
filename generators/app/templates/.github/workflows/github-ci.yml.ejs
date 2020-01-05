@@ -9,7 +9,7 @@ jobs:
             - uses: actions/checkout@v1
             - uses: actions/setup-node@v1
               with:
-                  node-version: 12.13.1
+                  node-version: <%= NODE_VERSION %>
             - name: Install node.js packages
               run: npm install
             - name: Link module
@@ -27,7 +27,7 @@ jobs:
             - uses: actions/checkout@v1
             - uses: actions/setup-node@v1
               with:
-                  node-version: 12.13.1
+                  node-version: <%= NODE_VERSION %>
             - name: Install node.js packages
               run: npm install
             - name: Link module
@@ -42,7 +42,7 @@ jobs:
                 yo jhipster-<%= moduleName %> --force
               working-directory: ./test/templates/${{ matrix.sample }}
             - name: Run integration-tests
-              run: | 
+              run: |
                 '[ -f ./mvnw ] && ./mvnw -ntp verify'
                 '[ -f ./gradlew ] && ./gradlew test integrationTest'
               working-directory: ./test/templates/${{ matrix.sample }}

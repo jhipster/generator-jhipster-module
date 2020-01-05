@@ -2,7 +2,7 @@ os:
     - linux
 language: node_js
 node_js:
-    - "12.14.0"
+    - "<%= NODE_VERSION %>"
 before_install:
     - npm install -g npm
 install:
