@@ -10,6 +10,7 @@ module.exports = class extends BaseGenerator {
             init(args) {
                 if (args === 'default') {
                     // do something when argument is 'default'
+                    this.message = 'default message';
                 }
             },
             readConfig() {
@@ -39,6 +40,7 @@ module.exports = class extends BaseGenerator {
     prompting() {
         const prompts = [
             {
+                when: () => typeof this.message === 'undefined',
                 type: 'input',
                 name: 'message',
                 message: 'Please put something',
@@ -50,7 +52,6 @@ module.exports = class extends BaseGenerator {
         this.prompt(prompts).then((props) => {
             this.props = props;
             // To access props later use this.props.someOption;
-
             done();
         });
     }
@@ -82,7 +83,9 @@ module.exports = class extends BaseGenerator {
         const webappDir = jhipsterConstants.CLIENT_MAIN_SRC_DIR;
 
         // variable from questions
-        this.message = this.props.message;
+        if (typeof this.message === 'undefined') {
+            this.message = this.props.message;
+        }
 
         // show all variables
         this.log('\n--- some config read from config ---');
@@ -101,7 +104,7 @@ module.exports = class extends BaseGenerator {
         this.log(`webappDir=${webappDir}`);
 
         this.log('\n--- variables from questions ---');
-        this.log(`\nmessage=${this.message}`);
+        this.log(`message=${this.message}`);
         this.log('------\n');
 
         if (this.clientFramework === 'react') {
