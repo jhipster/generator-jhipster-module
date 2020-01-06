@@ -12,7 +12,6 @@ const expectedFiles = {
         '.eslintrc.json',
         '.gitattributes',
         '.gitignore',
-        '.travis.yml',
         'package.json',
         'README.md',
         'test/templates/maven-angularX/.yo-rc.json',
