@@ -71,7 +71,7 @@ ${chalk.red.bold('                 :::lie.:::')}\n`);
                 message: 'Do you want to enable hooks for your module from JHipster generator?',
                 choices: [
                     {
-                        name: 'No, This is a stand alone module',
+                        name: 'No, This is a standalone module',
                         value: 'none'
                     },
                     {

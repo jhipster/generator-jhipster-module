@@ -49,23 +49,14 @@ module.exports = class extends BaseGenerator {
         ];
 
         const done = this.async();
-        this.prompt(prompts).then((props) => {
-            this.props = props;
-            // To access props later use this.props.someOption;
+        this.prompt(prompts).then(answers => {
+            this.promptAnswers = answers;
+            // To access props answers use this.promptAnswers.someOption;
             done();
         });
     }
 
     writing() {
-        // function to use directly template
-        this.template = function (source, destination) {
-            this.fs.copyTpl(
-                this.templatePath(source),
-                this.destinationPath(destination),
-                this
-            );
-        };
-
         // read config from .yo-rc.json
         this.baseName = this.jhipsterAppConfig.baseName;
         this.packageName = this.jhipsterAppConfig.packageName;
@@ -84,7 +75,7 @@ module.exports = class extends BaseGenerator {
 
         // variable from questions
         if (typeof this.message === 'undefined') {
-            this.message = this.props.message;
+            this.message = this.promptAnswers.message;
         }
 
         // show all variables
