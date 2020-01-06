@@ -84,16 +84,7 @@ module.exports = class extends BaseGenerator {
             },
 
             writeFiles() {
-                // function to use directly template
-                this.template = function (source, destination) {
-                    this.fs.copyTpl(
-                        this.templatePath(source),
-                        this.destinationPath(destination),
-                        this
-                    );
-                };
-
-                this.template('dummy.txt', 'dummy.txt', this, {});
+                this.template('dummy.txt', 'dummy.txt');
             },
 
             updateConfig() {

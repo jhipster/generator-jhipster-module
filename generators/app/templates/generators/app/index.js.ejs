@@ -57,15 +57,6 @@ module.exports = class extends BaseGenerator {
     }
 
     writing() {
-        // function to use directly template
-        this.template = function (source, destination) {
-            this.fs.copyTpl(
-                this.templatePath(source),
-                this.destinationPath(destination),
-                this
-            );
-        };
-
         // read config from .yo-rc.json
         this.baseName = this.jhipsterAppConfig.baseName;
         this.packageName = this.jhipsterAppConfig.packageName;
