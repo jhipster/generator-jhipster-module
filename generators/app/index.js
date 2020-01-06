@@ -170,7 +170,6 @@ ${chalk.red.bold('                 :::lie.:::')}\n`);
         this.template('.eslintrc.json', '.eslintrc.json');
         this.template('.gitattributes', '.gitattributes');
         this.template('.gitignore', '.gitignore');
-        this.template('.travis.yml.ejs', '.travis.yml');
         this.template('package.json.ejs', 'package.json');
         if (this.license === 'apache') {
             this.template('LICENSE_APACHE.ejs', 'LICENSE');
