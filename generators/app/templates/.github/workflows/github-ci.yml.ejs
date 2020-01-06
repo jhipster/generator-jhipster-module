@@ -12,8 +12,6 @@ jobs:
                   node-version: <%= NODE_VERSION %>
             - name: Install node.js packages
               run: npm install
-            - name: Link module
-              run: npm link
             - name: Run generator tests
               run: npm test
     integration-tests:
