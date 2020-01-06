@@ -163,42 +163,42 @@ ${chalk.red.bold('                 :::lie.:::')}\n`);
 
         // copy general files
         this.template('.github/workflows/github-ci.yml.ejs', '.github/workflows/github-ci.yml');
-        this.template('.prettierrc.ejs', '.prettierrc');
-        this.template('.prettierignore.ejs', '.prettierignore');
-        this.template('editorconfig', '.editorconfig');
-        this.template('eslintignore', '.eslintignore');
-        this.template('eslintrc.json', '.eslintrc.json');
-        this.template('gitattributes', '.gitattributes');
-        this.template('gitignore', '.gitignore');
-        this.template('_travis.yml', '.travis.yml');
-        this.template('_package.json', 'package.json');
+        this.template('.prettierrc', '.prettierrc');
+        this.template('.prettierignore', '.prettierignore');
+        this.template('.editorconfig', '.editorconfig');
+        this.template('.eslintignore', '.eslintignore');
+        this.template('.eslintrc.json', '.eslintrc.json');
+        this.template('.gitattributes', '.gitattributes');
+        this.template('.gitignore', '.gitignore');
+        this.template('.travis.yml.ejs', '.travis.yml');
+        this.template('package.json.ejs', 'package.json');
         if (this.license === 'apache') {
-            this.template('_LICENSE_APACHE', 'LICENSE');
+            this.template('LICENSE_APACHE.ejs', 'LICENSE');
         } else if (this.license === 'gpl') {
-            this.template('_LICENSE_GPL', 'LICENSE');
+            this.template('LICENSE_GPL.ejs', 'LICENSE');
         } else if (this.license === 'mit') {
-            this.template('_LICENSE_MIT', 'LICENSE');
+            this.template('LICENSE_MIT.ejs', 'LICENSE');
         }
-        this.template('_README.md', 'README.md');
+        this.template('README.md.ejs', 'README.md');
 
         // copy files for test
         mkdirp('test/templates/default');
-        this.template('test/templates/gradle-react/_yo-rc.json', 'test/templates/gradle-react/.yo-rc.json');
-        this.template('test/templates/maven-angularX/_yo-rc.json', 'test/templates/maven-angularX/.yo-rc.json');
-        this.template('test/_app.spec.js', 'test/app.spec.js');
+        this.template('test/templates/gradle-react/.yo-rc.json', 'test/templates/gradle-react/.yo-rc.json');
+        this.template('test/templates/maven-angularX/.yo-rc.json', 'test/templates/maven-angularX/.yo-rc.json');
+        this.template('test/app.spec.js.ejs', 'test/app.spec.js');
 
         // copy files for the generator
         mkdirp('generators/app/templates');
-        this.template('generators/app/_index.js', 'generators/app/index.js');
-        this.template('generators/app/templates/_dummy.txt', 'generators/app/templates/dummy.txt');
+        this.template('generators/app/index.js.ejs', 'generators/app/index.js');
+        this.template('generators/app/templates/dummy.txt.ejs', 'generators/app/templates/dummy.txt');
 
         // copy files for the hook
         if (this.hook === 'none' || this.hookCallback === 'app') {
             return;
         }
         mkdirp('generators/entity/templates');
-        this.template('generators/entity/_index.js', 'generators/entity/index.js');
-        this.template('generators/entity/templates/_dummy.txt', 'generators/entity/templates/dummy.txt');
+        this.template('generators/entity/index.js.ejs', 'generators/entity/index.js');
+        this.template('generators/entity/templates/dummy.txt.ejs', 'generators/entity/templates/dummy.txt');
     }
 
     end() {
