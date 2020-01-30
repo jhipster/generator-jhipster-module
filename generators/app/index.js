@@ -169,7 +169,7 @@ ${chalk.red.bold('                 :::lie.:::')}\n`);
         this.template('.eslintignore', '.eslintignore');
         this.template('.eslintrc.json', '.eslintrc.json');
         this.template('.gitattributes', '.gitattributes');
-        this.template('.gitignore', '.gitignore');
+        this.template('.gitignore.ejs', '.gitignore');
         this.template('package.json.ejs', 'package.json');
         if (this.license === 'apache') {
             this.template('LICENSE_APACHE.ejs', 'LICENSE');
