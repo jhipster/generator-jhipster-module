@@ -111,6 +111,8 @@ module.exports = class extends BaseGenerator {
             this.template('dummy.txt', 'dummy-gradle.txt');
         }
         <%_ if (hook !== 'none') { _%>
+        // Register this generator as a dev dependency
+        this.addNpmDevDependency('generator-jhipster-<%= moduleName %>', packagejs.version);
         try {
             this.registerModule('generator-jhipster-<%= moduleName %>', '<%= hookFor %>', '<%= hookType %>', '<%= hookCallback %>', '<%= moduleDescription %>');
         } catch (err) {
