@@ -22,7 +22,7 @@
     "url": "git+https://github.com/jhipster/generator-jhipster-module.git"
   },
   "dependencies": {
-    "chalk": "2.4.1",
+    "chalk": "3.0.0",
     "gulp-filter": "6.0.0",
     "mkdirp": "0.5.1",
     "prettier": "1.19.1",
