@@ -9,7 +9,7 @@ jobs:
             - uses: actions/checkout@v1
             - uses: actions/setup-node@v1
               with:
-                  node-version: 12.16.1
+                  node-version: 12.18.3
             - name: Install node.js packages
               run: npm install
             - name: Run generator tests
