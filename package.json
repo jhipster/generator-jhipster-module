@@ -1,56 +1,56 @@
 {
-  "name": "generator-jhipster-module",
-  "version": "2.6.1",
-  "description": "Yeoman generator to create a JHipster module",
-  "keywords": [
-    "yeoman-generator",
-    "jhipster"
-  ],
-  "homepage": "https://github.com/jhipster/generator-jhipster-module",
-  "bugs": "https://github.com/jhipster/generator-jhipster-module/issues",
-  "author": {
-    "name": "Pascal Grimaud",
-    "email": "",
-    "url": "https://twitter.com/pascalgrimaud"
-  },
-  "files": [
-    "generators"
-  ],
-  "main": "generators/app/index.js",
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/jhipster/generator-jhipster-module.git"
-  },
-  "dependencies": {
-    "chalk": "4.0.0",
-    "gulp-filter": "6.0.0",
-    "mkdirp": "0.5.1",
-    "prettier": "1.19.1",
-    "through2": "3.0.1",
-    "yeoman-generator": "4.10.1"
-  },
-  "devDependencies": {
-    "eslint": "6.8.0",
-    "eslint-config-airbnb-base": "13.0.0",
-    "eslint-config-prettier": "6.11.0",
-    "eslint-plugin-import": "2.20.2",
-    "eslint-plugin-prettier": "3.1.4",
-    "fs-extra": "8.1.0",
-    "mocha": "7.1.2",
-    "yeoman-assert": "3.1.1",
-    "yeoman-test": "2.6.0"
-  },
-  "scripts": {
-    "prettier:format": "prettier --write \"{,**/}*.{js,json,md,yml}\"",
-    "prettier:check": "prettier --check \"{,**/}*.{js,json,md,yml}\"",
-    "pretest": "eslint .",
-    "lint": "eslint .",
-    "lint-fix": "eslint . --fix",
-    "release": "git push && git push --tags && npm publish",
-    "release:patch": "npm version patch -a -m \"Update to %s\" && npm run release",
-    "release:minor": "npm version minor -a -m \"Update to %s\" && npm run release",
-    "release:major": "npm version major -a -m \"Update to %s\" && npm run release",
-    "test": "mocha test/*.js --slow 0 --reporter spec"
-  },
-  "license": "Apache-2.0"
+    "name": "generator-jhipster-module",
+    "version": "2.6.1",
+    "description": "Yeoman generator to create a JHipster module",
+    "keywords": [
+        "yeoman-generator",
+        "jhipster"
+    ],
+    "homepage": "https://github.com/jhipster/generator-jhipster-module",
+    "bugs": "https://github.com/jhipster/generator-jhipster-module/issues",
+    "author": {
+        "name": "Pascal Grimaud",
+        "email": "",
+        "url": "https://twitter.com/pascalgrimaud"
+    },
+    "files": [
+        "generators"
+    ],
+    "main": "generators/app/index.js",
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/jhipster/generator-jhipster-module.git"
+    },
+    "dependencies": {
+        "chalk": "4.0.0",
+        "gulp-filter": "6.0.0",
+        "mkdirp": "0.5.1",
+        "prettier": "2.0.5",
+        "through2": "3.0.1",
+        "yeoman-generator": "4.10.1"
+    },
+    "devDependencies": {
+        "eslint": "6.8.0",
+        "eslint-config-airbnb-base": "14.2.0",
+        "eslint-config-prettier": "6.11.0",
+        "eslint-plugin-import": "2.22.0",
+        "eslint-plugin-prettier": "3.1.4",
+        "fs-extra": "8.1.0",
+        "mocha": "7.1.2",
+        "yeoman-assert": "3.1.1",
+        "yeoman-test": "2.6.0"
+    },
+    "scripts": {
+        "prettier:format": "prettier --write \"{,**/}*.{js,json,md,yml}\"",
+        "prettier:check": "prettier --check \"{,**/}*.{js,json,md,yml}\"",
+        "pretest": "eslint .",
+        "lint": "eslint .",
+        "lint-fix": "eslint . --fix",
+        "release": "git push && git push --tags && npm publish",
+        "release:patch": "npm version patch -a -m \"Update to %s\" && npm run release",
+        "release:minor": "npm version minor -a -m \"Update to %s\" && npm run release",
+        "release:major": "npm version major -a -m \"Update to %s\" && npm run release",
+        "test": "mocha test/*.js --slow 0 --reporter spec"
+    },
+    "license": "Apache-2.0"
 }

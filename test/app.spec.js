@@ -18,20 +18,15 @@ const expectedFiles = {
         'test/templates/gradle-react/.yo-rc.json',
         'test/app.spec.js',
         'generators/app/index.js',
-        'generators/app/templates/dummy.txt'
+        'generators/app/templates/dummy.txt',
     ],
-    entity: [
-        'generators/entity/index.js',
-        'generators/entity/templates/dummy.txt'
-    ],
-    license: [
-        'LICENSE'
-    ]
+    entity: ['generators/entity/index.js', 'generators/entity/templates/dummy.txt'],
+    license: ['LICENSE'],
 };
 
 describe('JHipster generator module', () => {
     describe('default configuration no license', () => {
-        beforeEach((done) => {
+        beforeEach(done => {
             helpers
                 .run(path.join(__dirname, '../generators/app'))
                 .withPrompts({
@@ -42,23 +37,23 @@ describe('JHipster generator module', () => {
                     authorName: 'authorName',
                     authorEmail: 'mail@mail',
                     authorUrl: 'authorUrl',
-                    license: 'no'
+                    license: 'no',
                 })
                 .on('end', done);
         });
         it('generates default files', () => {
             assert.file(expectedFiles.module);
         });
-        it('doesn\'t generate license', () => {
+        it("doesn't generate license", () => {
             assert.noFile(expectedFiles.license);
         });
-        it('doesn\'t generate entity files', () => {
+        it("doesn't generate entity files", () => {
             assert.noFile(expectedFiles.entity);
         });
     });
 
     describe('default configuration license Apache', () => {
-        beforeEach((done) => {
+        beforeEach(done => {
             helpers
                 .run(path.join(__dirname, '../generators/app'))
                 .withPrompts({
@@ -69,7 +64,7 @@ describe('JHipster generator module', () => {
                     authorName: 'authorName',
                     authorEmail: 'mail@mail',
                     authorUrl: 'authorUrl',
-                    license: 'apache'
+                    license: 'apache',
                 })
                 .on('end', done);
         });
@@ -81,14 +76,15 @@ describe('JHipster generator module', () => {
             assert.fileContent('README.md', 'Apache-2.0');
             assert.fileContent('package.json', 'Apache-2.0');
         });
-        it('doesn\'t generate entity files', () => {
+        it("doesn't generate entity files", () => {
             assert.noFile(expectedFiles.entity);
         });
     });
 
     describe('default configuration license GNU GPLv3', () => {
-        beforeEach((done) => {
-            helpers.run(path.join(__dirname, '../generators/app'))
+        beforeEach(done => {
+            helpers
+                .run(path.join(__dirname, '../generators/app'))
                 .withPrompts({
                     moduleName: 'hello-world',
                     moduleDescription: 'hello world',
@@ -97,7 +93,7 @@ describe('JHipster generator module', () => {
                     authorName: 'authorName',
                     authorEmail: 'mail@mail',
                     authorUrl: 'authorUrl',
-                    license: 'gpl'
+                    license: 'gpl',
                 })
                 .on('end', done);
         });
@@ -109,13 +105,13 @@ describe('JHipster generator module', () => {
             assert.fileContent('README.md', 'GPL-3.0');
             assert.fileContent('package.json', 'GPL-3.0');
         });
-        it('doesn\'t generate entity files', () => {
+        it("doesn't generate entity files", () => {
             assert.noFile(expectedFiles.entity);
         });
     });
 
     describe('default configuration license MIT', () => {
-        beforeEach((done) => {
+        beforeEach(done => {
             helpers
                 .run(path.join(__dirname, '../generators/app'))
                 .withPrompts({
@@ -126,7 +122,7 @@ describe('JHipster generator module', () => {
                     authorName: 'authorName',
                     authorEmail: 'mail@mail',
                     authorUrl: 'authorUrl',
-                    license: 'mit'
+                    license: 'mit',
                 })
                 .on('end', done);
         });
@@ -138,13 +134,13 @@ describe('JHipster generator module', () => {
             assert.fileContent('README.md', 'MIT');
             assert.fileContent('package.json', 'MIT');
         });
-        it('doesn\'t generate entity files', () => {
+        it("doesn't generate entity files", () => {
             assert.noFile(expectedFiles.entity);
         });
     });
 
     describe('hook postEntity on default generator', () => {
-        beforeEach((done) => {
+        beforeEach(done => {
             helpers
                 .run(path.join(__dirname, '../generators/app'))
                 .withPrompts({
@@ -156,7 +152,7 @@ describe('JHipster generator module', () => {
                     authorName: 'authorName',
                     authorEmail: 'mail@mail',
                     authorUrl: 'authorUrl',
-                    license: 'no'
+                    license: 'no',
                 })
                 .on('end', done);
         });
@@ -164,13 +160,13 @@ describe('JHipster generator module', () => {
         it('generates default files', () => {
             assert.file(expectedFiles.module);
         });
-        it('doesn\'t generate entity files', () => {
+        it("doesn't generate entity files", () => {
             assert.noFile(expectedFiles.entity);
         });
     });
 
     describe('hook postEntity on entity', () => {
-        beforeEach((done) => {
+        beforeEach(done => {
             helpers
                 .run(path.join(__dirname, '../generators/app'))
                 .withPrompts({
@@ -182,7 +178,7 @@ describe('JHipster generator module', () => {
                     authorName: 'authorName',
                     authorEmail: 'mail@mail',
                     authorUrl: 'authorUrl',
-                    license: 'no'
+                    license: 'no',
                 })
                 .on('end', done);
         });

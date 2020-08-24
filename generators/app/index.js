@@ -26,15 +26,15 @@ ${chalk.red.bold('        under:the:sky,:Seven:for:the')}
 ${chalk.red.bold('      Dwarf-Lords::in::their::halls:of')}
 ${chalk.red.bold('     stone,:Nine             for:Mortal')}
 ${chalk.red.bold(`    :::Men:::${chalk.yellow('    ________')}     doomed::to`)}
-${chalk.red.bold(`  die.:One${chalk.yellow('    _,-\'...:... `-.    ')}for:::the`)}
+${chalk.red.bold(`  die.:One${chalk.yellow("    _,-'...:... `-.    ")}for:::the`)}
 ${chalk.red.bold(` ::Dark::${chalk.yellow('   ,- .:::::::::::. `. ')}Hipster::on`)}
-${chalk.red.bold(` his:dark${chalk.yellow(' ,\'  .:::::::::::::.  `.  ')}:throne:`)}
+${chalk.red.bold(` his:dark${chalk.yellow(" ,'  .:::::::::::::.  `.  ")}:throne:`)}
 ${chalk.red.bold(`In:::the${chalk.yellow(' /    :::: Java :::::    \\  ')}Land::of`)}
 ${chalk.red.bold(`JHipster${chalk.yellow(' \\    ::: Hipster :::    /  ')}:where::`)}
-${chalk.red.bold(` ::the:::${chalk.yellow(' \'.  \':::::::::::::\'  ,\'  ')}Shadows:`)}
-${chalk.red.bold(`  lie::One${chalk.yellow('  `. ``:::::::::\'\' ,\'  ')}Module::to`)}
-${chalk.red.bold(`  ::rule::${chalk.yellow('    `-._```:\'\'\'_,-\'     ')}::them::`)}
-${chalk.red.bold(`   all,::One${chalk.yellow('      `-----\'       ')}Module::to`)}
+${chalk.red.bold(` ::the:::${chalk.yellow(" '.  ':::::::::::::'  ,'  ")}Shadows:`)}
+${chalk.red.bold(`  lie::One${chalk.yellow("  `. ``:::::::::'' ,'  ")}Module::to`)}
+${chalk.red.bold(`  ::rule::${chalk.yellow("    `-._```:'''_,-'     ")}::them::`)}
+${chalk.red.bold(`   all,::One${chalk.yellow("      `-----'       ")}Module::to`)}
 ${chalk.red.bold('    ::find:::                  them,:One')}
 ${chalk.red.bold('     Module:::::to          bring::them')}
 ${chalk.red.bold('       all::and::in:the:darkness:bind')}
@@ -42,7 +42,9 @@ ${chalk.red.bold('         them:In:the:Land:of:JHipster')}
 ${chalk.red.bold('            where:::the::Shadows')}
 ${chalk.red.bold('                 :::lie.:::')}\n`);
                 this.log(chalk.white.bold('         http://www.jhipster.tech\n'));
-                this.log(chalk.white(`Welcome to the ${chalk.bold('JHipster Module')} Generator! ${chalk.yellow(`v${packagejs.version}\n`)}`));
+                this.log(
+                    chalk.white(`Welcome to the ${chalk.bold('JHipster Module')} Generator! ${chalk.yellow(`v${packagejs.version}\n`)}`)
+                );
             },
             initConstants() {
                 this.NODE_VERSION = constants.NODE_VERSION;
@@ -58,12 +60,12 @@ ${chalk.red.bold('                 :::lie.:::')}\n`);
                 name: 'moduleName',
                 validate: validateModuleName,
                 message: 'What is the base name of your module?',
-                default: 'helloworld'
+                default: 'helloworld',
             },
             {
                 type: 'input',
                 name: 'moduleDescription',
-                message: 'Give a description of your module'
+                message: 'Give a description of your module',
             },
             {
                 type: 'list',
@@ -72,14 +74,14 @@ ${chalk.red.bold('                 :::lie.:::')}\n`);
                 choices: [
                     {
                         name: 'No, This is a standalone module',
-                        value: 'none'
+                        value: 'none',
                     },
                     {
                         name: 'Yes, Enable post entity hook',
-                        value: 'postEntity'
-                    }
+                        value: 'postEntity',
+                    },
                 ],
-                default: 'none'
+                default: 'none',
             },
             {
                 when: props => props.hook !== 'none',
@@ -88,9 +90,9 @@ ${chalk.red.bold('                 :::lie.:::')}\n`);
                 message: 'Do you want to add a subgenerator for this hook?',
                 choices: [
                     { name: 'Yes, Add a subgenerator', value: 'entity' },
-                    { name: 'No, Hook to default generator', value: 'app' }
+                    { name: 'No, Hook to default generator', value: 'app' },
                 ],
-                default: 'entity'
+                default: 'entity',
             },
             {
                 type: 'input',
@@ -104,19 +106,19 @@ ${chalk.red.bold('                 :::lie.:::')}\n`);
                 name: 'authorName',
                 message: 'Who are you? Firstname Lastname',
                 default: 'Firstname Lastname',
-                store: true
+                store: true,
             },
             {
                 type: 'input',
                 name: 'authorEmail',
                 message: 'Your email?',
-                store: true
+                store: true,
             },
             {
                 type: 'input',
                 name: 'authorUrl',
                 message: 'Your home page url?',
-                store: true
+                store: true,
             },
             {
                 type: 'list',
@@ -126,13 +128,13 @@ ${chalk.red.bold('                 :::lie.:::')}\n`);
                     { name: 'No license', value: 'no' },
                     { name: 'Apache License 2.0', value: 'apache' },
                     { name: 'GNU General Public License v3.0', value: 'gnu' },
-                    { name: 'MIT License', value: 'mit' }
+                    { name: 'MIT License', value: 'mit' },
                 ],
-                default: 'no'
-            }
+                default: 'no',
+            },
         ];
 
-        this.prompt(prompts).then((props) => {
+        this.prompt(prompts).then(props => {
             this.props = props;
             this.moduleName = props.moduleName;
             this.moduleDescription = props.moduleDescription;
@@ -154,11 +156,7 @@ ${chalk.red.bold('                 :::lie.:::')}\n`);
     writing() {
         // function to use directly template
         this.template = function (source, destination) {
-            this.fs.copyTpl(
-                this.templatePath(source),
-                this.destinationPath(destination),
-                this
-            );
+            this.fs.copyTpl(this.templatePath(source), this.destinationPath(destination), this);
         };
 
         // copy general files
@@ -207,7 +205,11 @@ ${chalk.red.bold('                 :::lie.:::')}\n`);
         this.log(`- link: ${chalk.yellow.bold('npm link')} or ${chalk.yellow.bold('yarn link')}`);
         this.log('- test your module in a JHipster project: ');
         this.log('    - go into your JHipster project');
-        this.log(`    - link to your module: ${chalk.yellow.bold(`npm link generator-jhipster-${this.moduleName}`)} or ${chalk.yellow.bold(`yarn link generator-jhipster-${this.moduleName}`)}`);
+        this.log(
+            `    - link to your module: ${chalk.yellow.bold(`npm link generator-jhipster-${this.moduleName}`)} or ${chalk.yellow.bold(
+                `yarn link generator-jhipster-${this.moduleName}`
+            )}`
+        );
         this.log(`    - launch your module: ${chalk.yellow.bold(`yo jhipster-${this.moduleName}`)}`);
         this.log('- then, come back here, and begin to code!\n');
     }
