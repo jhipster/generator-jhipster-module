@@ -39,6 +39,8 @@
     "yeoman-test": "2.6.0"
   },
   "scripts": {
+    "prettier:format": "prettier --write \"{,**/}*.{js,json,md,yml}\"",
+    "prettier:check": "prettier --check \"{,**/}*.{js,json,md,yml}\"",
     "pretest": "eslint .",
     "lint": "eslint .",
     "lint-fix": "eslint . --fix",
