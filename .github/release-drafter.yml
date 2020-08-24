@@ -1,4 +1,10 @@
+categories:
+    - title: '🧰 Dependencies'
+      labels:
+          - 'dependencies'
 template: |
     ## What’s Changed
 
     $CHANGES
+
+    [diff](https://github.com/jhipster/generator-jhipster-module/compare/$PREVIOUS_TAG...master)
