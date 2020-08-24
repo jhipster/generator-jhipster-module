@@ -1,0 +1,3 @@
+node_modules
+**/templates/**/
+package-lock.json
