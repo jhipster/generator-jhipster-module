@@ -1,6 +1,8 @@
 # generator-jhipster-module
+
 [![NPM version][npm-image]][npm-url] [![Azure DevOps Build Status][azure-devops-image]][azure-devops-url-main] [![Build Status][github-actions-image]][github-actions-url] [![Dependency Status][daviddm-image]][daviddm-url]
-> Yeoman generator to create a JHipster module - "*One JHipster module to rule them all*"
+
+> Yeoman generator to create a JHipster module - "_One JHipster module to rule them all_"
 
 <div align="center">
     <a href="https://www.jhipster.tech">
@@ -50,31 +52,31 @@ yarn global upgrade generator-jhipster-module
 
 To run the module, follow these steps :
 
-- create a new directory
+-   create a new directory
 
 ```bash
 mkdir generator-jhipster-<name of your module>
 ```
 
-- go into this directory
+-   go into this directory
 
 ```bash
 cd generator-jhipster-<name of your module>
 ```
 
-- init the git repository
+-   init the git repository
 
 ```bash
 git init
 ```
 
-- launch the jhipster-module
+-   launch the jhipster-module
 
 ```bash
 yo jhipster-module
 ```
 
-- answer all questions
+-   answer all questions
 
 # License
 
