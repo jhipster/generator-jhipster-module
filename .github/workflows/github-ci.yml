@@ -7,7 +7,7 @@ jobs:
         timeout-minutes: 10
         steps:
             - uses: actions/checkout@v1
-            - uses: actions/setup-node@v1
+            - uses: actions/setup-node@v2.1.1
               with:
                   node-version: 12.18.3
             - name: Install node.js packages
