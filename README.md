@@ -6,7 +6,7 @@
 
 <div align="center">
     <a href="https://www.jhipster.tech">
-        <img src="https://github.com/jhipster/jhipster-artwork/blob/master/logos/JHipster%20RGB-small100x25px.png?raw=true">
+        <img src="https://github.com/jhipster/jhipster-artwork/blob/main/logos/JHipster%20RGB-small100x25px.png?raw=true">
     </a>
 </div>
 
@@ -84,7 +84,7 @@ Apache-2.0 © [Pascal Grimaud](https://twitter.com/pascalgrimaud) and the respec
 
 [npm-image]: https://img.shields.io/npm/v/generator-jhipster-module.svg
 [npm-url]: https://npmjs.org/package/generator-jhipster-module
-[azure-devops-image]: https://dev.azure.com/jhipster/generator-jhipster-module/_apis/build/status/jhipster.generator-jhipster-module?branchName=master
+[azure-devops-image]: https://dev.azure.com/jhipster/generator-jhipster-module/_apis/build/status/jhipster.generator-jhipster-module?branchName=main
 [azure-devops-url-main]: https://dev.azure.com/jhipster/generator-jhipster-module/_build
 [github-actions-image]: https://github.com/jhipster/generator-jhipster-module/workflows/Build/badge.svg
 [github-actions-url]: https://github.com/jhipster/generator-jhipster-module/actions
