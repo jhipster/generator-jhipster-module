@@ -1,5 +1,5 @@
 // Version of Node
-const NODE_VERSION = '12.18.3';
+const NODE_VERSION = '14.15.0';
 
 const constants = {
     NODE_VERSION,
