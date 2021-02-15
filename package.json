@@ -36,7 +36,7 @@
         "eslint-plugin-import": "2.22.1",
         "eslint-plugin-prettier": "3.1.4",
         "fs-extra": "9.1.0",
-        "mocha": "8.2.1",
+        "mocha": "8.3.0",
         "yeoman-assert": "3.1.1",
         "yeoman-test": "3.0.0"
     },
