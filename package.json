@@ -38,7 +38,7 @@
         "fs-extra": "9.1.0",
         "mocha": "8.2.1",
         "yeoman-assert": "3.1.1",
-        "yeoman-test": "3.0.0"
+        "yeoman-test": "5.0.1"
     },
     "scripts": {
         "prettier:format": "prettier --write \"{,**/}*.{js,json,md,yml}\"",
