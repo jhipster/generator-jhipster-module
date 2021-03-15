@@ -31,8 +31,8 @@ module.exports = class extends BaseGenerator {
 
     async prompting() {
         // don't prompt if data are imported from a file
-        if (this.entityConfig.useConfigurationFile === true && this.entityConfig.data && typeof this.entityConfig.data.yourOptionKey !== 'undefined') {
-            this.yourOptionKey = this.entityConfig.data.yourOptionKey;
+        if (this.entityConfig.useConfigurationFile === true && typeof this.entityConfig.yourOptionKey !== 'undefined') {
+            this.yourOptionKey = this.entityConfig.yourOptionKey;
             return;
         }
         const prompts = [
@@ -46,6 +46,7 @@ module.exports = class extends BaseGenerator {
 
         await this.prompt(prompts).then(answers => {
             this.promptAnswers = answers;
+            this.yourOptionKey = '';
             // To access props answers use this.promptAnswers.someOption;
         });
     }
