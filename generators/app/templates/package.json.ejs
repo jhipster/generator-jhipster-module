@@ -22,29 +22,30 @@
     "url": "git+https://github.com/<%= githubName %>/generator-jhipster-<%= moduleName %>.git"
   },
   "dependencies": {
-    "chalk": "3.0.0",
+    "chalk": "4.1.0",
     "generator-jhipster": ">=7.0.0-beta.1",
     "mkdirp": "0.5.1",
     "semver": "7.1.1",
     "shelljs": "0.8.3",
-    "yeoman-generator": "4.4.0"
+    "yeoman-generator": "4.13.0"
   },
   "devDependencies": {
     "eslint": "6.8.0",
-    "eslint-config-airbnb-base": "14.0.0",
-    "eslint-config-prettier": "6.9.0",
-    "eslint-plugin-import": "2.19.1",
-    "eslint-plugin-prettier": "3.1.2",
-    "fs-extra": "8.1.0",
+    "eslint-config-airbnb-base": "14.2.0",
+    "eslint-config-prettier": "6.13.0",
+    "eslint-plugin-import": "2.22.1",
+    "eslint-plugin-prettier": "3.1.4",
+    "fs-extra": "9.1.0",
     "husky": "3.1.0",
     "lint-staged": "9.5.0",
-    "mocha": "6.2.2",
-    "prettier": "1.19.1",
+    "mocha": "8.2.1",
+    "prettier": "2.1.2",
     "yeoman-assert": "3.1.1",
-    "yeoman-test": "2.0.0"
+    "yeoman-test": "3.0.0"
   },
   "scripts": {
     "prettier:format": "prettier --write \"{,**/}*.{js,json,md,yml}\"",
+    "prettier:check": "prettier --check \"{,**/}*.{js,json,md,yml}\"",
     "pretest": "eslint .",
     "lint": "eslint .",
     "lint-fix": "eslint . --fix",
