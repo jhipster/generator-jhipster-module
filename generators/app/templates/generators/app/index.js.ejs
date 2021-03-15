@@ -100,17 +100,19 @@ module.exports = class extends BaseGenerator {
 
         if (this.clientFramework === 'react') {
             this.template('dummy.txt', 'dummy-react.txt');
-        }
-        if (this.clientFramework === 'angularX') {
+        } else if (this.clientFramework === 'angularX') {
             this.template('dummy.txt', 'dummy-angularX.txt');
+        } else if (this.clientFramework === 'vue') {
+            this.template('dummy.txt', 'dummy-vue.txt');
         }
+
         if (this.buildTool === 'maven') {
             this.template('dummy.txt', 'dummy-maven.txt');
-        }
-        if (this.buildTool === 'gradle') {
+        } else if (this.buildTool === 'gradle') {
             this.template('dummy.txt', 'dummy-gradle.txt');
         }
         <%_ if (hook !== 'none') { _%>
+
         // Register this generator as a dev dependency
         this.addNpmDevDependency('generator-jhipster-<%= moduleName %>', packagejs.version);
         try {
