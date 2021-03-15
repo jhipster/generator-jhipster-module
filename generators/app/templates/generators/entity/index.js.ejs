@@ -29,13 +29,12 @@ module.exports = class extends BaseGenerator {
         };
     }
 
-    prompting() {
+    async prompting() {
         // don't prompt if data are imported from a file
         if (this.entityConfig.useConfigurationFile === true && this.entityConfig.data && typeof this.entityConfig.data.yourOptionKey !== 'undefined') {
             this.yourOptionKey = this.entityConfig.data.yourOptionKey;
             return;
         }
-        const done = this.async();
         const prompts = [
             {
                 type: 'confirm',
@@ -45,10 +44,9 @@ module.exports = class extends BaseGenerator {
             }
         ];
 
-        this.prompt(prompts).then(answers => {
+        await this.prompt(prompts).then(answers => {
             this.promptAnswers = answers;
             // To access props answers use this.promptAnswers.someOption;
-            done();
         });
     }
 

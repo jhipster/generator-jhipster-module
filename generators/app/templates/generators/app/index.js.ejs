@@ -42,7 +42,7 @@ module.exports = class extends BaseGenerator {
         };
     }
 
-    prompting() {
+    async prompting() {
         const prompts = [
             {
                 when: () => typeof this.message === 'undefined',
@@ -53,11 +53,9 @@ module.exports = class extends BaseGenerator {
             }
         ];
 
-        const done = this.async();
-        this.prompt(prompts).then(answers => {
+        await this.prompt(prompts).then(answers => {
             this.promptAnswers = answers;
             // To access props answers use this.promptAnswers.someOption;
-            done();
         });
     }
 
