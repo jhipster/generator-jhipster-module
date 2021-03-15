@@ -8,18 +8,51 @@
     "jhipster-7"
   ],
   "homepage": "https://github.com/<%= githubName %>/generator-jhipster-<%= moduleName %>",
+  "bugs": {
+    "url": "https://github.com/<%= githubName %>/generator-jhipster-<%= moduleName %>/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/<%= githubName %>/generator-jhipster-<%= moduleName %>.git"
+  },
+  <%_ if (license === 'apache') { _%>
+  "license": "Apache-2.0",
+  <%_ } else if (license === 'gpl') { _%>
+  "license": "GPL-3.0",
+  <%_ } else if (license === 'mit') { _%>
+  "license": "MIT",
+  <%_ } _%>
   "author": {
     "name": "<%= authorName %>",
     "email": "<%= authorEmail %>",
     "url": "<%= authorUrl %>"
   },
+  "main": "generators/app/index.js",
   "files": [
     "generators"
   ],
-  "main": "generators/app/index.js",
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/<%= githubName %>/generator-jhipster-<%= moduleName %>.git"
+  "scripts": {
+    "lint": "eslint .",
+    "lint:fix": "eslint . --fix",
+    "prettier:check": "prettier --check \"{,**/}*.{js,json,md,yml}\"",
+    "prettier:format": "prettier --write \"{,**/}*.{js,json,md,yml}\"",
+    "release": "git push && git push --tags && npm publish",
+    "release:major": "npm version major -a -m \"Update to %s\" && npm run release",
+    "release:minor": "npm version minor -a -m \"Update to %s\" && npm run release",
+    "release:patch": "npm version patch -a -m \"Update to %s\" && npm run release",
+    "pretest": "eslint .",
+    "test": "mocha test"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
+  "lint-staged": {
+    "*.{js,json,yml,md}": [
+      "prettier --write",
+      "git add"
+    ]
   },
   "dependencies": {
     "chalk": "4.1.0",
@@ -42,38 +75,5 @@
     "prettier": "2.1.2",
     "yeoman-assert": "3.1.1",
     "yeoman-test": "3.0.0"
-  },
-  "scripts": {
-    "prettier:format": "prettier --write \"{,**/}*.{js,json,md,yml}\"",
-    "prettier:check": "prettier --check \"{,**/}*.{js,json,md,yml}\"",
-    "pretest": "eslint .",
-    "lint": "eslint .",
-    "lint-fix": "eslint . --fix",
-    "release": "git push && git push --tags && npm publish",
-    "release:patch": "npm version patch -a -m \"Update to %s\" && npm run release",
-    "release:minor": "npm version minor -a -m \"Update to %s\" && npm run release",
-    "release:major": "npm version major -a -m \"Update to %s\" && npm run release",
-    "test": "mocha test"
-  },
-  "husky": {
-    "hooks": {
-      "pre-commit": "lint-staged"
-    }
-  },
-  "lint-staged": {
-    "*.{js,json,yml,md}": [
-      "prettier --write",
-      "git add"
-    ]
-  },
-  <%_ if (license === 'apache') { _%>
-  "license": "Apache-2.0",
-  <%_ } else if (license === 'gpl') { _%>
-  "license": "GPL-3.0",
-  <%_ } else if (license === 'mit') { _%>
-  "license": "MIT",
-  <%_ } _%>
-  "bugs": {
-    "url": "https://github.com/<%= githubName %>/generator-jhipster-<%= moduleName %>/issues"
   }
 }

@@ -1,84 +1,82 @@
 name: Build
 on: [push, pull_request]
 jobs:
-    unit-tests:
-        name: unit tests
-        runs-on: ubuntu-latest
-        timeout-minutes: 40
-        steps:
-            - uses: actions/checkout@v1
-            - uses: actions/setup-node@v1
-              with:
-                  node-version: <%= NODE_VERSION %>
-            - name: Install node.js packages
-              run: npm install
-            - name: Run generator tests
-              run: npm test
-    integration-tests:
-        name: integration tests
-        runs-on: ubuntu-latest
-        strategy:
-            matrix:
-                sample: [maven-angularX, gradle-react]
-        timeout-minutes: 40
-        steps:
-            - uses: actions/checkout@v1
-            - uses: actions/setup-node@v1
-              with:
-                  node-version: <%= NODE_VERSION %>
-            - name: Install node.js packages
-              run: npm install
-            - name: Link module
-              run: npm link
-            - name: Install tools
-              run: npm install -g yo
-            - name: Install JHipster
-              run: npm install -g generator-jhipster
-            - name: Prepare temporary directory
-              run: |
-                cp -r ./test-integration/samples/${{ matrix.sample }} /tmp/
-                cp -r ./test-integration/samples/.jhipster /tmp/${{ matrix.sample }}
-            - name: Generate project
-              run: |
-                jhipster --with-entities --no-insight
-                yo jhipster-<%= moduleName %> default --force
-              working-directory: /tmp/${{ matrix.sample }}
-            - name: Run backend tests
-              run: |
-                  if [ -f "mvnw" ]; then
-                      ./mvnw -ntp -P-webpack verify --batch-mode \
-                          -Dlogging.level.ROOT=OFF \
-                          -Dlogging.level.org.zalando=OFF \
-                          -Dlogging.level.io.github.jhipster=OFF \
-                          -Dlogging.level.com.mycompany.myapp=OFF \
-                          -Dlogging.level.org.springframework=OFF \
-                          -Dlogging.level.org.springframework.web=OFF \
-                          -Dlogging.level.org.springframework.security=OFF
-                  elif [ -f "gradlew" ]; then
-                      JHI_GRADLE_EXCLUDE_WEBPACK="-x webpack"
-                      if [[ $(grep "\"skipClient\": true" .yo-rc.json) != "" ]]; then
-                          JHI_GRADLE_EXCLUDE_WEBPACK=""
-                      fi
-                      ./gradlew test integrationTest $JHI_GRADLE_EXCLUDE_WEBPACK \
-                          -Dlogging.level.ROOT=OFF \
-                          -Dlogging.level.org.zalando=OFF \
-                          -Dlogging.level.io.github.jhipster=OFF \
-                          -Dlogging.level.com.mycompany.myapp=OFF \
-                          -Dlogging.level.org.springframework=OFF \
-                          -Dlogging.level.org.springframework.web=OFF \
-                          -Dlogging.level.org.springframework.security=OFF
-                  fi
-              working-directory: /tmp/${{ matrix.sample }}
-            - name: Run frontend tests
-              run: |
-                  if [[ $(grep yarn .yo-rc.json) != "" ]]; then
-                    JHI_CLIENT_PACKAGE_MANAGER=yarn
-                  else
-                    JHI_CLIENT_PACKAGE_MANAGER=npm
-                  fi
-                  if [ -f "tsconfig.json" ]; then
-                    $JHI_CLIENT_PACKAGE_MANAGER run test
-                  fi
-              working-directory: /tmp/${{ matrix.sample }}
-
-
+  unit-tests:
+    name: unit tests
+    runs-on: ubuntu-latest
+    timeout-minutes: 40
+    steps:
+      - uses: actions/checkout@v1
+      - uses: actions/setup-node@v1
+        with:
+          node-version: <%= NODE_VERSION %>
+      - name: Install node.js packages
+        run: npm install
+      - name: Run generator tests
+        run: npm test
+  integration-tests:
+    name: integration tests
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        sample: [maven-angularX, gradle-react]
+    timeout-minutes: 40
+    steps:
+      - uses: actions/checkout@v1
+      - uses: actions/setup-node@v1
+        with:
+          node-version: <%= NODE_VERSION %>
+      - name: Install node.js packages
+        run: npm install
+      - name: Link module
+        run: npm link
+      - name: Install tools
+        run: npm install -g yo
+      - name: Install JHipster
+        run: npm install -g generator-jhipster
+      - name: Prepare temporary directory
+        run: |
+          cp -r ./test-integration/samples/${{ matrix.sample }} /tmp/
+          cp -r ./test-integration/samples/.jhipster /tmp/${{ matrix.sample }}
+      - name: Generate project
+        run: |
+          jhipster --with-entities --no-insight
+          yo jhipster-<%= moduleName %> default --force
+        working-directory: /tmp/${{ matrix.sample }}
+      - name: Run backend tests
+        run: |
+          if [ -f "mvnw" ]; then
+              ./mvnw -ntp -P-webpack verify --batch-mode \
+                  -Dlogging.level.ROOT=OFF \
+                  -Dlogging.level.org.zalando=OFF \
+                  -Dlogging.level.io.github.jhipster=OFF \
+                  -Dlogging.level.com.mycompany.myapp=OFF \
+                  -Dlogging.level.org.springframework=OFF \
+                  -Dlogging.level.org.springframework.web=OFF \
+                  -Dlogging.level.org.springframework.security=OFF
+          elif [ -f "gradlew" ]; then
+              JHI_GRADLE_EXCLUDE_WEBPACK="-x webpack"
+              if [[ $(grep "\"skipClient\": true" .yo-rc.json) != "" ]]; then
+                  JHI_GRADLE_EXCLUDE_WEBPACK=""
+              fi
+              ./gradlew test integrationTest $JHI_GRADLE_EXCLUDE_WEBPACK \
+                  -Dlogging.level.ROOT=OFF \
+                  -Dlogging.level.org.zalando=OFF \
+                  -Dlogging.level.io.github.jhipster=OFF \
+                  -Dlogging.level.com.mycompany.myapp=OFF \
+                  -Dlogging.level.org.springframework=OFF \
+                  -Dlogging.level.org.springframework.web=OFF \
+                  -Dlogging.level.org.springframework.security=OFF
+          fi
+        working-directory: /tmp/${{ matrix.sample }}
+      - name: Run frontend tests
+        run: |
+          if [[ $(grep yarn .yo-rc.json) != "" ]]; then
+            JHI_CLIENT_PACKAGE_MANAGER=yarn
+          else
+            JHI_CLIENT_PACKAGE_MANAGER=npm
+          fi
+          if [ -f "tsconfig.json" ]; then
+            $JHI_CLIENT_PACKAGE_MANAGER run test
+          fi
+        working-directory: /tmp/${{ matrix.sample }}
