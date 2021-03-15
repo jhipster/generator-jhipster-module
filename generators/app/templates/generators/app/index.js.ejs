@@ -98,11 +98,11 @@ module.exports = class extends BaseGenerator {
         this.log(`message=${this.message}`);
         this.log('------\n');
 
-        if (this.clientFramework === 'react') {
+        if (this.clientFramework === jhipsterConstants.SUPPORTED_CLIENT_FRAMEWORKS.REACT) {
             this.template('dummy.txt', 'dummy-react.txt');
-        } else if (this.clientFramework === 'angularX') {
+        } else if (this.clientFramework === jhipsterConstants.SUPPORTED_CLIENT_FRAMEWORKS.ANGULAR) {
             this.template('dummy.txt', 'dummy-angularX.txt');
-        } else if (this.clientFramework === 'vue') {
+        } else if (this.clientFramework === jhipsterConstants.SUPPORTED_CLIENT_FRAMEWORKS.VUE) {
             this.template('dummy.txt', 'dummy-vue.txt');
         }
 
