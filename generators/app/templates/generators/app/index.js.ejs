@@ -103,12 +103,8 @@ module.exports = class extends BaseGenerator {
         this.log(`message=${this.message}`);
         this.log('------\n');
 
-        if (this.clientFramework === SUPPORTED_CLIENT_FRAMEWORKS.REACT) {
-            this.template('dummy.txt', 'dummy-react.txt');
-        } else if (this.clientFramework === SUPPORTED_CLIENT_FRAMEWORKS.ANGULAR) {
-            this.template('dummy.txt', 'dummy-angularX.txt');
-        } else if (this.clientFramework === SUPPORTED_CLIENT_FRAMEWORKS.VUE) {
-            this.template('dummy.txt', 'dummy-vue.txt');
+        if (Object.values(SUPPORTED_CLIENT_FRAMEWORKS).includes(this.clientFramework)) {
+            this.template('dummy.txt', `dummy-${this.clientFramework}.txt`);
         }
 
         if (this.buildTool === 'maven') {
