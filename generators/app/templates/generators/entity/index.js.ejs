@@ -59,9 +59,6 @@ module.exports = class extends BaseGenerator {
                 this.clientPackageManager = this.jhipsterAppConfig.clientPackageManager;
                 this.buildTool = this.jhipsterAppConfig.buildTool;
 
-                // use function in generator-base.js from generator-jhipster
-                this.angularAppName = this.getAngularXAppName();
-
                 // use constants from generator-constants.js
                 const javaDir = `${jhipsterConstants.SERVER_MAIN_SRC_DIR + this.packageFolder}/`;
                 const resourceDir = jhipsterConstants.SERVER_MAIN_RES_DIR;
