@@ -51,4 +51,28 @@ describe('JHipster generator <%= moduleName %>', () => {
             ]);
         });
     });
+
+    describe('Test with Maven and Vue', () => {
+        beforeEach((done) => {
+            helpers
+                .run(path.join(__dirname, '../generators/app'))
+                .inTmpDir((dir) => {
+                    fse.copySync(path.join(__dirname, '../test/templates/maven-vue'), dir);
+                })
+                .withOptions({
+                    testmode: true
+                })
+                .withPrompts({
+                    message: 'simple message to say hello'
+                })
+                .on('end', done);
+        });
+
+        it('generate dummy.txt file', () => {
+            assert.file([
+                'dummy-maven.txt',
+                'dummy-vue.txt',
+            ]);
+        });
+    });
 });
