@@ -1,6 +1,6 @@
 # generator-jhipster-module
 
-[![NPM version][npm-image]][npm-url] [![Azure DevOps Build Status][azure-devops-image]][azure-devops-url-main] [![Build Status][github-actions-image]][github-actions-url] [![Dependency Status][daviddm-image]][daviddm-url]
+[![NPM version][npm-image]][npm-url] [![Build Status][github-actions-image]][github-actions-url] [![Dependency Status][daviddm-image]][daviddm-url]
 
 > Yeoman generator to create a JHipster module - "_One JHipster module to rule them all_"
 
@@ -84,8 +84,6 @@ Apache-2.0 © [Pascal Grimaud](https://twitter.com/pascalgrimaud) and the respec
 
 [npm-image]: https://img.shields.io/npm/v/generator-jhipster-module.svg
 [npm-url]: https://npmjs.org/package/generator-jhipster-module
-[azure-devops-image]: https://dev.azure.com/jhipster/generator-jhipster-module/_apis/build/status/jhipster.generator-jhipster-module?branchName=main
-[azure-devops-url-main]: https://dev.azure.com/jhipster/generator-jhipster-module/_build
 [github-actions-image]: https://github.com/jhipster/generator-jhipster-module/workflows/Build/badge.svg
 [github-actions-url]: https://github.com/jhipster/generator-jhipster-module/actions
 [daviddm-image]: https://david-dm.org/jhipster/generator-jhipster-module.svg?theme=shields.io
