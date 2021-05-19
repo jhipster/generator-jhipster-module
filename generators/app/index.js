@@ -182,6 +182,7 @@ ${chalk.red.bold('                 :::lie.:::')}\n`);
         mkdirp('test/templates/default');
         this.template('test/templates/gradle-react/.yo-rc.json', 'test/templates/gradle-react/.yo-rc.json');
         this.template('test/templates/maven-angularX/.yo-rc.json', 'test/templates/maven-angularX/.yo-rc.json');
+        this.template('test/templates/maven-vue/.yo-rc.json', 'test/templates/maven-vue/.yo-rc.json');
         this.template('test/app.spec.js.ejs', 'test/app.spec.js');
 
         // copy files for the generator

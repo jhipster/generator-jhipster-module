@@ -5,53 +5,42 @@
   "keywords": [
     "yeoman-generator",
     "jhipster-module",
-    "jhipster-6"
+    "jhipster-7"
   ],
   "homepage": "https://github.com/<%= githubName %>/generator-jhipster-<%= moduleName %>",
+  "bugs": {
+    "url": "https://github.com/<%= githubName %>/generator-jhipster-<%= moduleName %>/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/<%= githubName %>/generator-jhipster-<%= moduleName %>.git"
+  },
+  <%_ if (license === 'apache') { _%>
+  "license": "Apache-2.0",
+  <%_ } else if (license === 'gpl') { _%>
+  "license": "GPL-3.0",
+  <%_ } else if (license === 'mit') { _%>
+  "license": "MIT",
+  <%_ } _%>
   "author": {
     "name": "<%= authorName %>",
     "email": "<%= authorEmail %>",
     "url": "<%= authorUrl %>"
   },
+  "main": "generators/app/index.js",
   "files": [
     "generators"
   ],
-  "main": "generators/app/index.js",
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/<%= githubName %>/generator-jhipster-<%= moduleName %>.git"
-  },
-  "dependencies": {
-    "chalk": "3.0.0",
-    "generator-jhipster": ">=6.0.0",
-    "mkdirp": "0.5.1",
-    "semver": "7.1.1",
-    "shelljs": "0.8.3",
-    "yeoman-generator": "4.4.0"
-  },
-  "devDependencies": {
-    "eslint": "6.8.0",
-    "eslint-config-airbnb-base": "14.0.0",
-    "eslint-config-prettier": "6.9.0",
-    "eslint-plugin-import": "2.19.1",
-    "eslint-plugin-prettier": "3.1.2",
-    "fs-extra": "8.1.0",
-    "husky": "3.1.0",
-    "lint-staged": "9.5.0",
-    "mocha": "6.2.2",
-    "prettier": "1.19.1",
-    "yeoman-assert": "3.1.1",
-    "yeoman-test": "2.0.0"
-  },
   "scripts": {
-    "prettier:format": "prettier --write \"{,**/}*.{js,json,md,yml}\"",
-    "pretest": "eslint .",
     "lint": "eslint .",
-    "lint-fix": "eslint . --fix",
+    "lint:fix": "eslint . --fix",
+    "prettier:check": "prettier --check \"{,**/}*.{js,json,md,yml}\"",
+    "prettier:format": "prettier --write \"{,**/}*.{js,json,md,yml}\"",
     "release": "git push && git push --tags && npm publish",
-    "release:patch": "npm version patch -a -m \"Update to %s\" && npm run release",
-    "release:minor": "npm version minor -a -m \"Update to %s\" && npm run release",
     "release:major": "npm version major -a -m \"Update to %s\" && npm run release",
+    "release:minor": "npm version minor -a -m \"Update to %s\" && npm run release",
+    "release:patch": "npm version patch -a -m \"Update to %s\" && npm run release",
+    "pretest": "eslint .",
     "test": "mocha test"
   },
   "husky": {
@@ -65,14 +54,23 @@
       "git add"
     ]
   },
-  <%_ if (license === 'apache') { _%>
-  "license": "Apache-2.0",
-  <%_ } else if (license === 'gpl') { _%>
-  "license": "GPL-3.0",
-  <%_ } else if (license === 'mit') { _%>
-  "license": "MIT",
-  <%_ } _%>
-  "bugs": {
-    "url": "https://github.com/<%= githubName %>/generator-jhipster-<%= moduleName %>/issues"
+  "dependencies": {
+    "chalk": "4.1.0",
+    "generator-jhipster": ">=7.0.0",
+    "semver": "7.1.1"
+  },
+  "devDependencies": {
+    "eslint": "6.8.0",
+    "eslint-config-airbnb-base": "14.2.0",
+    "eslint-config-prettier": "6.13.0",
+    "eslint-plugin-import": "2.22.1",
+    "eslint-plugin-prettier": "3.1.4",
+    "fs-extra": "9.1.0",
+    "husky": "3.1.0",
+    "lint-staged": "9.5.0",
+    "mocha": "8.2.1",
+    "prettier": "2.1.2",
+    "yeoman-assert": "3.1.1",
+    "yeoman-test": "5.0.0"
   }
 }
