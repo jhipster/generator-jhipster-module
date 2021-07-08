@@ -27,7 +27,7 @@
         "mkdirp": "0.5.1",
         "prettier": "2.3.2",
         "through2": "4.0.2",
-        "yeoman-generator": "4.13.0"
+        "yeoman-generator": "5.4.0"
     },
     "devDependencies": {
         "eslint": "7.30.0",
